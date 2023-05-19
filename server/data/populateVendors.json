@@ -1,0 +1,73 @@
+[{
+    "name": "Manley Performance Proudcts",
+    "main_contact": "Neil Vernarelli",
+    "phone_number": 732905336,
+    "email": "sales@manleyperformance.com",
+    "address_line_1": "1960 Swarthmore Avenue",
+    "address_line_2": "",
+    "city": "Lakewood",
+    "state": "NJ",
+    "zip_code": "08701",
+    "customer_number": "2484595"
+},
+{
+    "name": "Engine Parts Warehouse",
+    "main_contact": "Don Lee",
+    "phone_number": 8006255900,
+    "email": "sales@epw.com",
+    "address_line_1": "7301 Global Dr",
+    "address_line_2": "",
+    "city": "Louisville",
+    "state": "KY",
+    "zip_code": "40258",
+    "customer_number": "785267"
+},
+{
+    "name": "JE Pistons",
+    "main_contact": "Stephen Hoppe",
+    "phone_number": 7148988763,
+    "email": "sales@jepistons.com",
+    "address_line_1": "10800 Valley View Street",
+    "address_line_2": "",
+    "city": "Cypress",
+    "state": "CA",
+    "zip_code": "90630",
+    "customer_number": "982567"
+},
+{
+    "name": "Mahle",
+    "main_contact": "Howard Quigley",
+    "phone_number": 7148988763,
+    "email": "sales@mahle.com",
+    "address_line_1": "23030 MAHLE Drive",
+    "address_line_2": "",
+    "city": "Farmington Hills",
+    "state": "MI",
+    "zip_code": "48335",
+    "customer_number": "623845"
+},
+{
+    "name": "Oliver Connecting Rods",
+    "main_contact": "Angie Ortiz",
+    "phone_number": 2312374515,
+    "email": "sales@oliver.com",
+    "address_line_1": "5339 M66 North",
+    "address_line_2": "",
+    "city": "Charlevoix",
+    "state": "MI",
+    "zip_code": "49720",
+    "customer_number": "452325"
+},
+{
+    "name": "CP-Carrillo",
+    "main_contact": "Mandy Dickens",
+    "phone_number": 9495679000,
+    "email": "sales@cpcarrillo.com",
+    "address_line_1": "1902 McGaw Ave",
+    "address_line_2": "",
+    "city": "Irvine",
+    "state": "CA",
+    "zip_code": "92614",
+    "customer_number": "258741"
+}
+]

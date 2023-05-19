@@ -1,0 +1,128 @@
+[
+    {
+        "name": "1.6 dia 5.065 len SS Exhaust Valve",
+        "customer_price": 350,
+        "cost": 250,
+        "part_number": "73597-Ex",
+        "vendor": "63d683039451e524617482d1",
+        "partCategory": "63f0c488072396125bdcf24d",
+        "manufacture": "Manley"
+    },
+    {
+        "name": "2.02 dia 5.040 len SS Intake Valve",
+        "customer_price": 250,
+        "cost": 150,
+        "part_number": "73597-In",
+        "vendor": "63d683039451e524617482d1",
+        "partCategory": "63f0c47c072396125bdcf24b",
+        "manufacture": "Manley"
+    },
+    {
+        "name": "3/8 8740 1.5 len",
+        "customer_price": 350,
+        "cost": 250,
+        "part_number": "75782",
+        "vendor": "63d683039451e524617482d2",
+        "partCategory": "63f0c474072396125bdcf249",
+        "manufacture": "Scat"
+    },
+    {
+        "name": "51061R",
+        "customer_price": 35,
+        "cost": 25,
+        "part_number": "51061R",
+        "vendor": "63d683039451e524617482d2",
+        "partCategory": "63f0c467072396125bdcf247",
+        "manufacture": "Wix"
+    },
+    {
+        "name": "4.125 Bore 4.000 Stroke 6.000 Rod Length",
+        "customer_price": 1000,
+        "cost": 800,
+        "part_number": "JE-279780",
+        "vendor": "63d683039451e524617482d3",
+        "partCategory": "63ef6d352fdabc1512e10b8e",
+        "manufacture": "JE Pistons"
+    },
+    {
+        "name": "4.135 Bore 3.875 Stroke 6.000 Rod Length",
+        "customer_price": 1000,
+        "cost": 800,
+        "part_number": "JE-279781",
+        "vendor": "63d683039451e524617482d3",
+        "partCategory": "63ef6d352fdabc1512e10b8e",
+        "manufacture": "JE Pisons"
+    },
+    {
+        "name": "4.145 Bore 4.125 Stroke 6.125 Rod Length",
+        "customer_price": 1000,
+        "cost": 800,
+        "part_number": "JE-279783",
+        "vendor": "63d683039451e524617482d3",
+        "partCategory": "63ef6d352fdabc1512e10b8e",
+        "manufacture": "JE Pistons"
+    },
+    {
+        "name": "4.030 Bore 3.480 Stroke 5.700 Rod Length",
+        "customer_price": 900,
+        "cost": 600,
+        "part_number": "930206530",
+        "vendor": "63d683039451e524617482d4",
+        "partCategory": "63ef6d352fdabc1512e10b8e",
+        "manufacture": "Mahle"
+    },
+    {
+        "name": "4.040 Bore 3.480 Stroke 5.700 Rod Length",
+        "customer_price": 900,
+        "cost": 600,
+        "part_number": "930206540",
+        "vendor": "63d683039451e524617482d4",
+        "partCategory": "63ef6d352fdabc1512e10b8e",
+        "manufacture": "Mahle"
+    },
+    {
+        "name": "4.060 Bore 3.480 Stroke 5.700 Rod Length",
+        "customer_price": 900,
+        "cost": 600,
+        "part_number": "930206560",
+        "vendor": "63d683039451e524617482d4",
+        "partCategory": "63ef6d352fdabc1512e10b8e",
+        "manufacture": "Mahle"
+    },
+    {
+        "name": "Billet 6.000 Length 2.100 Rod Journal",
+        "customer_price": 1600,
+        "cost": 1400,
+        "part_number": "C6000Q4UL8",
+        "vendor": "63d683039451e524617482d5",
+        "partCategory": "63f0c454072396125bdcf245",
+        "manufacture": "Oliver"
+    },
+    {
+        "name": "Billet 6.000 Length 2.000 Rod Journal",
+        "customer_price": 1600,
+        "cost": 1400,
+        "part_number": "C6000T2UL8",
+        "vendor": "63d683039451e524617482d5",
+        "partCategory": "63f0c454072396125bdcf245",
+        "manufacture": "Oliver"
+    },
+    {
+        "name": "Pro-H Straight H-Beam 6.000 Length 2.000 Rod Journal",
+        "customer_price": 2100,
+        "cost": 1800,
+        "part_number": "76385H-8",
+        "vendor": "63d683039451e524617482d6",
+        "partCategory": "63f0c454072396125bdcf245",
+        "manufacture": "CP-Carrillo"
+    },
+    {
+        "name": "Pro-H Straight H-Beam 6.125 Length 2.000 Rod Journal",
+        "customer_price": 2100,
+        "cost": 1800,
+        "part_number": "76386H-8",
+        "vendor": "63d683039451e524617482d6",
+        "partCategory": "63f0c454072396125bdcf245",
+        "manufacture": "CP-Carrillo"
+    }
+]

@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Cylinder Hone",
+        "price": 100,
+        "laborCategory": "63f251e4a8f54d437ec38058"
+    },
+    {
+        "name": "Cylinder Hone -w Deck Plate",
+        "price": 200,
+        "laborCategory": "63f251e4a8f54d437ec38058"
+    },
+    {
+        "name": "Valve Job 8 Cylinder",
+        "price": 350,
+        "laborCategory": "63f251e4a8f54d437ec38058"
+    },
+    {
+        "name": "Bore 8 Cylinder",
+        "price": 350,
+        "laborCategory": "63f251e4a8f54d437ec38058"
+    },
+    {
+        "name": "Deck 8 Cylinder",
+        "price": 100,
+        "laborCategory": "63f251e4a8f54d437ec38058"
+    },
+    {
+        "name": "Assemble 8 Cylinder",
+        "price": 800,
+        "laborCategory": "63f251e4a8f54d437ec38058"
+    },
+    {
+        "name": "Refreshen USRA B-Mod",
+        "price": 3200,
+        "laborCategory": "63f26aed93fbf757aa172bf5"
+    },
+    {
+        "name": "Refreshen USRA A-Mod",
+        "price": 4000,
+        "laborCategory": "63f26aed93fbf757aa172bf5"
+    }
+]
