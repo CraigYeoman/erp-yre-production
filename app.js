@@ -4,7 +4,6 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 require("dotenv").config();
-const cors = require("cors");
 const helmet = require("helmet");
 const xss = require("xss-clean");
 const mongoSanitize = require("express-mongo-sanitize");
@@ -28,7 +27,6 @@ const notFoundMiddleware = require("./middleware/not-found");
 const errorMiddleware = require("./middleware/error-handler");
 const authenticateUser = require("./middleware/auth");
 
-app.use(cors());
 if (process.env.NODE_ENV !== "production") {
   app.use(logger("dev"));
 }
