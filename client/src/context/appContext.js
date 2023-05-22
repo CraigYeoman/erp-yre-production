@@ -57,7 +57,7 @@ const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const authFetch = axios.create({
-    baseURL: "/",
+    baseURL: "/api/v1/erp/",
   });
 
   authFetch.interceptors.request.use(
