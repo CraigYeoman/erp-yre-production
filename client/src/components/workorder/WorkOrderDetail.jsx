@@ -283,13 +283,7 @@ const WorkOrderDetail = () => {
           }}
         >
           {images.map((pic) => {
-            return (
-              <img
-                src={`http://localhost:5000/${pic}`}
-                alt="img"
-                width="250px"
-              />
-            );
+            return <img src={pic} alt="img" width="250px" />;
           })}
         </Box>
       )}

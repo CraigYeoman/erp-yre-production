@@ -765,11 +765,7 @@ const WorkOrderForm = () => {
                           flexDirection: "column",
                         }}
                       >
-                        <img
-                          src={`http://localhost:5000/${pic}`}
-                          alt="img"
-                          width="250px"
-                        />
+                        <img src={pic} alt="img" width="250px" />
                         <Button
                           onClick={() => {
                             deletePath(pic, currentImgs, setCurrentImgs);
@@ -786,7 +782,7 @@ const WorkOrderForm = () => {
                         }}
                       >
                         <img
-                          src={`http://localhost:5000/${pic}`}
+                          src={pic}
                           alt="img"
                           width="250px"
                           style={{ opacity: 0.5 }}
