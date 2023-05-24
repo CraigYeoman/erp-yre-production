@@ -152,7 +152,6 @@ const AppProvider = ({ children }) => {
 
     try {
       const { data } = await authFetch(state.path);
-      console.log(data);
       dispatch({ type: GET_DATA_SUCCESS, payload: { data } });
     } catch (error) {
       if (error.response.data.msg === "Authentication Invalid") logoutUser();

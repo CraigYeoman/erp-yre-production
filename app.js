@@ -8,7 +8,7 @@ const helmet = require("helmet");
 const xss = require("xss-clean");
 const mongoSanitize = require("express-mongo-sanitize");
 const path = require("path");
-const fileURLToPath = require("url");
+const cors = require("cors");
 
 const vendorsRouter = require("./routes/vendors");
 const jobTypeRouter = require("./routes/jobtype");
@@ -31,6 +31,7 @@ if (process.env.NODE_ENV !== "production") {
   app.use(logger("dev"));
 }
 
+app.use(cors());
 app.use(express.static(path.resolve(__dirname, "./client/build")));
 
 app.use(express.json());

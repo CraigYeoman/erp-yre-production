@@ -311,7 +311,6 @@ const work_order_create_post = (req, res, next) => {
   const errors = validationResult(req);
   const formData = req.body;
   imagePath = [];
-  console.log(req.files);
   if (req.files) {
     req.files.forEach((file) => {
       imagePath.push(file.path);
