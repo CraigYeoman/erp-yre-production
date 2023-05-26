@@ -216,6 +216,10 @@ const AppProvider = ({ children }) => {
         const url = `/${schema}/${id}/delete`;
         const { data } = await authFetch.post(url);
         dispatch({ type: POST_DATA_SUCCESS, payload: { data } });
+      } else if (action === "complete-post") {
+        const url = `/${schema}/${id}/complete`;
+        const { data } = await authFetch.post(url);
+        dispatch({ type: POST_DATA_SUCCESS, payload: { data } });
       } else if (action === "edit") {
         const url = `/${schema}/${id}/${action}`;
         const { data } = await authFetch.post(url, post);

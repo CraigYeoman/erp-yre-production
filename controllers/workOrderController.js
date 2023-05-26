@@ -413,6 +413,25 @@ const work_order_delete_post = (req, res, next) => {
   });
 };
 
+// Handle Work Order complete on POST.
+const work_order_complete_post = (req, res, next) => {
+  let today = new Date();
+  today.toISOString();
+  WorkOrder.findByIdAndUpdate(
+    req.params.id,
+    { complete: true, date_finished: today },
+    (err) => {
+      if (err) {
+        return next(err);
+      }
+      // Success
+      res.status(200).json({
+        msg: "Complete",
+      });
+    }
+  );
+};
+
 // Edit work order get.
 const work_order_edit_get = (req, res, next) => {
   async.parallel(
@@ -577,5 +596,6 @@ module.exports = {
   work_order_delete_post,
   work_order_edit_get,
   work_order_edit_post,
+  work_order_complete_post,
   index,
 };

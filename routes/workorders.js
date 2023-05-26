@@ -12,6 +12,7 @@ const {
   work_order_delete_post,
   work_order_edit_get,
   work_order_edit_post,
+  work_order_complete_post,
   index,
 } = require("../controllers/workOrderController");
 
@@ -50,6 +51,8 @@ router.route("/create").post(upload.array("images"), work_order_create_post);
 router.route("/:id/delete").get(work_order_delete_get);
 // POST request to delete work order.
 router.route("/:id/delete").post(work_order_delete_post);
+// POST request to mark complete work order.
+router.route("/:id/complete").post(work_order_complete_post);
 // GET request to update work order.
 router.route("/:id/edit").get(work_order_edit_get);
 // POST request to update work order.

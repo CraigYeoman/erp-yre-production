@@ -11,6 +11,7 @@ const WorkOrderDetail = () => {
   }, []);
 
   const [deleteOrder, setDeleteOrder] = useState(false);
+  const [completeOrder, setCompleteOrder] = useState(false);
 
   const {
     data,
@@ -91,6 +92,13 @@ const WorkOrderDetail = () => {
         >
           Delete
         </Button>
+        <Button
+          variant="contained"
+          onClick={() => setCompleteOrder(true)}
+          sx={{ marginLeft: "15px" }}
+        >
+          Complete
+        </Button>
         {deleteOrder && (
           <Box mt="15px">
             Are you sure you want to delete?
@@ -100,6 +108,20 @@ const WorkOrderDetail = () => {
               sx={{ marginLeft: "15px" }}
             >
               Delete
+            </Button>
+          </Box>
+        )}
+        {completeOrder && (
+          <Box mt="15px">
+            Mark work order as complete
+            <Button
+              variant="contained"
+              onClick={() =>
+                onSubmitPost("", "workorders", _id, "complete-post")
+              }
+              sx={{ marginLeft: "15px" }}
+            >
+              Complete
             </Button>
           </Box>
         )}
@@ -122,11 +144,15 @@ const WorkOrderDetail = () => {
         >
           Dates
         </Typography>
-
+        <p>Status: {complete ? "Complete" : "In Process"}</p>
         <p>Date Received: {DateTime.fromISO(date_received).toFormat("D")}</p>
         <p>Date Due: {DateTime.fromISO(date_due).toFormat("D")}</p>
-        <p>Status: {complete ? "Complete" : "In Process"}</p>
-        {complete ? <p>{date_finished}</p> : ""}
+
+        {complete ? (
+          <p>Date Finished: {DateTime.fromISO(date_finished).toFormat("D")}</p>
+        ) : (
+          ""
+        )}
       </Box>
       <Box
         mt="15px"
