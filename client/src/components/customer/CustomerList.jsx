@@ -27,9 +27,14 @@ const CustomerList = () => {
     {
       field: "_id",
       headerName: "ID",
-      flex: 1.5,
+      flex: 1,
       renderCell: (params) => (
         <Link
+          sx={{
+            textOverflow: "ellipsis",
+            overflow: "hidden",
+            whiteSpace: "nowrap",
+          }}
           component={RouterLink}
           color="inherit"
           onClick={() => getDetail(params.row._id, "customers")}
@@ -42,17 +47,17 @@ const CustomerList = () => {
     {
       field: "first_name",
       headerName: "First Name",
-      flex: 1,
+      flex: 0.6,
     },
     {
       field: "last_name",
       headerName: "Last Name",
-      flex: 1,
+      flex: 0.6,
     },
     {
       field: "phone_number",
       headerName: "Phone Number",
-      flex: 1,
+      flex: 0.8,
       renderCell: (params) => {
         return (
           <div className="rowitem">
@@ -60,31 +65,6 @@ const CustomerList = () => {
           </div>
         );
       },
-    },
-    {
-      field: "email",
-      headerName: "Email",
-      flex: 1,
-    },
-    {
-      field: "address_line_1",
-      headerName: "Address",
-      flex: 1,
-    },
-    {
-      field: "city",
-      headerName: "City",
-      flex: 1,
-    },
-    {
-      field: "state",
-      headerName: "State",
-      flex: 1,
-    },
-    {
-      field: "zip_code",
-      headerName: "Zip Code",
-      flex: 1,
     },
   ];
 
@@ -99,12 +79,16 @@ const CustomerList = () => {
             border: "none",
           },
           "& .MuiDataGrid-cell": {
-            borderBottom: "none",
+            borderColor: theme.palette.secondary[300],
+            paddingBottom: "8px",
+            paddingTop: "8px",
+            height: "auto",
           },
           "& .MuiDataGrid-columnHeaders": {
             backgroundColor: theme.palette.background.alt,
             color: theme.palette.secondary[100],
             borderBottom: "none",
+            maxHeight: "168px !important",
           },
           "& .MuiDataGrid-virtualScroller": {
             backgroundColor: theme.palette.primary.light,
@@ -116,6 +100,14 @@ const CustomerList = () => {
           },
           "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
             color: `${theme.palette.secondary[200]} !important`,
+          },
+          "& .MuiDataGrid-columnHeaderTitle": {
+            whiteSpace: "normal",
+            lineHeight: "normal",
+          },
+          "& .MuiDataGrid-columnHeader": {
+            // Forced to use important since overriding inline styles
+            height: "unset !important",
           },
         }}
       >

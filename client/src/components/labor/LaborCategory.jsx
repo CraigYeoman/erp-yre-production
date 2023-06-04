@@ -28,7 +28,7 @@ const LaborCategory = () => {
         variant="h4"
         fontWeight="bold"
         color={theme.palette.secondary[300]}
-        sx={{ marginBottom: "15px" }}
+        sx={{ marginBottom: "15px", marginTop: "15px" }}
       >
         <Link component={RouterLink} color="inherit" to={`/laborcategoryform/`}>
           New Category

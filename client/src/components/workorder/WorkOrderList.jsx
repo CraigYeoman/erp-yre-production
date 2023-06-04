@@ -51,9 +51,9 @@ const WorkOrderList = () => {
 
   const columns = [
     {
-      field: "_id",
-      headerName: "ID",
-      flex: 1.5,
+      field: "work_order_number",
+      headerName: "Work Order Number",
+      flex: 0.8,
       renderCell: (params) => (
         <Link
           component={RouterLink}
@@ -61,14 +61,9 @@ const WorkOrderList = () => {
           onClick={() => getDetail(params.row._id, "workorders")}
           to={`/workorderdetail/${params.row._id}`}
         >
-          {params.row._id}
+          {params.row.work_order_number}
         </Link>
       ),
-    },
-    {
-      field: "work_order_number",
-      headerName: "Work Order Number",
-      flex: 1,
     },
     {
       field: "jobType",
@@ -147,12 +142,17 @@ const WorkOrderList = () => {
             border: "none",
           },
           "& .MuiDataGrid-cell": {
-            borderBottom: "none",
+            // borderBottom: "none",
+            borderColor: theme.palette.secondary[300],
+            paddingBottom: "8px",
+            paddingTop: "8px",
+            height: "auto",
           },
           "& .MuiDataGrid-columnHeaders": {
             backgroundColor: theme.palette.background.alt,
             color: theme.palette.secondary[100],
             borderBottom: "none",
+            maxHeight: "168px !important",
           },
           "& .MuiDataGrid-virtualScroller": {
             backgroundColor: theme.palette.primary.light,
@@ -164,6 +164,14 @@ const WorkOrderList = () => {
           },
           "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
             color: `${theme.palette.secondary[200]} !important`,
+          },
+          "& .MuiDataGrid-columnHeaderTitle": {
+            whiteSpace: "normal",
+            lineHeight: "normal",
+          },
+          "& .MuiDataGrid-columnHeader": {
+            // Forced to use important since overriding inline styles
+            height: "unset !important",
           },
         }}
       >
@@ -240,6 +248,9 @@ const WorkOrderList = () => {
           rows={data.workOrders}
           getRowId={(row) => row._id}
           columns={columns}
+          pageSize={20}
+          autoHeight={true}
+          getRowHeight={() => "auto"}
         />
       </Box>
     </Box>

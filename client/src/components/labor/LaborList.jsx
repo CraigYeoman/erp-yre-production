@@ -63,12 +63,16 @@ const LaborList = () => {
             border: "none",
           },
           "& .MuiDataGrid-cell": {
-            borderBottom: "none",
+            borderColor: theme.palette.secondary[300],
+            paddingBottom: "8px",
+            paddingTop: "8px",
+            height: "auto",
           },
           "& .MuiDataGrid-columnHeaders": {
             backgroundColor: theme.palette.background.alt,
             color: theme.palette.secondary[100],
             borderBottom: "none",
+            maxHeight: "168px !important",
           },
           "& .MuiDataGrid-virtualScroller": {
             backgroundColor: theme.palette.primary.light,
@@ -81,6 +85,14 @@ const LaborList = () => {
           "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
             color: `${theme.palette.secondary[200]} !important`,
           },
+          "& .MuiDataGrid-columnHeaderTitle": {
+            whiteSpace: "normal",
+            lineHeight: "normal",
+          },
+          "& .MuiDataGrid-columnHeader": {
+            // Forced to use important since overriding inline styles
+            height: "unset !important",
+          },
         }}
       >
         <DataGrid
@@ -88,6 +100,9 @@ const LaborList = () => {
           rows={data.labor}
           getRowId={(row) => row._id}
           columns={columns}
+          pageSize={20}
+          autoHeight={true}
+          getRowHeight={() => "auto"}
         />
       </Box>
     </Box>

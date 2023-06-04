@@ -38,6 +38,7 @@ const Index = () => {
           sx={{
             flexDirection: "row",
             display: "flex",
+            flexWrap: "wrap",
             justifyContent: "space-between",
           }}
           backgroundColor={theme.palette.background.alt}
@@ -59,7 +60,12 @@ const Index = () => {
       </Box>
       <Box height="75vh">
         <Box
-          sx={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            gap: "15px",
+          }}
         >
           <IndexGrid name="Past Due" data={data.past_due} />
           <IndexGrid name="Due This Week" data={data.due_this_week} />

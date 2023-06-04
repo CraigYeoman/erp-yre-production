@@ -24,8 +24,8 @@ const PartsList = () => {
 
   const columns = [
     {
-      field: "_id",
-      headerName: "ID",
+      field: "part_number",
+      headerName: "Part Number",
       flex: 1.5,
       renderCell: (params) => (
         <Link
@@ -34,18 +34,13 @@ const PartsList = () => {
           onClick={() => getDetail(params.row._id, "parts")}
           to={`/partdetail/${params.row._id}`}
         >
-          {params.row._id}
+          {params.row.part_number}
         </Link>
       ),
     },
     {
       field: "name",
       headerName: "Name",
-      flex: 1,
-    },
-    {
-      field: "part_number",
-      headerName: "Part Number",
       flex: 1,
     },
     {
@@ -97,12 +92,16 @@ const PartsList = () => {
             border: "none",
           },
           "& .MuiDataGrid-cell": {
-            borderBottom: "none",
+            borderColor: theme.palette.secondary[300],
+            paddingBottom: "8px",
+            paddingTop: "8px",
+            height: "auto",
           },
           "& .MuiDataGrid-columnHeaders": {
             backgroundColor: theme.palette.background.alt,
             color: theme.palette.secondary[100],
             borderBottom: "none",
+            maxHeight: "168px !important",
           },
           "& .MuiDataGrid-virtualScroller": {
             backgroundColor: theme.palette.primary.light,
@@ -115,6 +114,14 @@ const PartsList = () => {
           "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
             color: `${theme.palette.secondary[200]} !important`,
           },
+          "& .MuiDataGrid-columnHeaderTitle": {
+            whiteSpace: "normal",
+            lineHeight: "normal",
+          },
+          "& .MuiDataGrid-columnHeader": {
+            // Forced to use important since overriding inline styles
+            height: "unset !important",
+          },
         }}
       >
         <DataGrid
@@ -122,6 +129,9 @@ const PartsList = () => {
           rows={data.parts}
           getRowId={(row) => row._id}
           columns={columns}
+          pageSize={20}
+          autoHeight={true}
+          getRowHeight={() => "auto"}
         />
       </Box>
     </Box>

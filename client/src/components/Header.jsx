@@ -46,7 +46,7 @@ const Header = ({ title, subtitle }) => {
       <Box sx={{ position: "relative" }}>
         <Button
           variant="contained"
-          sx={{ position: "relative", width: "90px" }}
+          sx={{ position: "relative" }}
           startIcon={<FaUserCircle />}
           onClick={() => setShowLogout(!showLogout)}
         >

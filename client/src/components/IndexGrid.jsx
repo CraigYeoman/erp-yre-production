@@ -77,7 +77,7 @@ const IndexGrid = ({ name, data }) => {
     {
       field: "jobType",
       headerName: "Job Type",
-      flex: 1,
+      flex: 1.1,
       renderCell: (params) => {
         return <div className="rowitem">{params.row.jobType.name}</div>;
       },
@@ -85,7 +85,7 @@ const IndexGrid = ({ name, data }) => {
   ];
 
   return (
-    <Box m="1.5rem 2.5rem">
+    <Box mt="1.5rem">
       <Box
         mt="15px"
         width="460px"

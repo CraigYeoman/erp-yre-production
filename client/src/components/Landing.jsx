@@ -12,26 +12,12 @@ const Landing = () => {
         justifyContent: "center",
       }}
     >
-      <Box width="90vw" mt="2.5rem">
+      <Box width="90vw" mt="3rem">
         <Box
           sx={{
             display: "flex",
-            justifyContent: "flex-start",
-          }}
-        >
-          <Typography
-            variant="h1"
-            fontWeight="bold"
-            color={theme.palette.secondary[300]}
-            sx={{ marginBottom: "15px" }}
-          >
-            ERP APP
-          </Typography>
-        </Box>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-evenly",
+            justifyContent: "center",
+            gap: "3rem",
           }}
         >
           <Box
@@ -55,7 +41,7 @@ const Landing = () => {
               color={theme.palette.secondary[100]}
               sx={{ marginBottom: "15px" }}
             >
-              Please click login or register. If wanting to view app please
+              Please click login or register. To view a demo of the app please
               click guest.
             </Typography>
             <Box

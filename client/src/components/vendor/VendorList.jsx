@@ -17,9 +17,9 @@ const VendorList = () => {
 
   const columns = [
     {
-      field: "_id",
-      headerName: "ID",
-      flex: 1.5,
+      field: "name",
+      headerName: "Name",
+      flex: 1,
       renderCell: (params) => (
         <Link
           component={RouterLink}
@@ -27,14 +27,9 @@ const VendorList = () => {
           onClick={() => getDetail(params.row._id, "vendors")}
           to={`/vendordetail/${params.row._id}`}
         >
-          {params.row._id}
+          {params.row.name}
         </Link>
       ),
-    },
-    {
-      field: "name",
-      headerName: "Name",
-      flex: 1,
     },
     {
       field: "main_contact",
@@ -78,12 +73,16 @@ const VendorList = () => {
             border: "none",
           },
           "& .MuiDataGrid-cell": {
-            borderBottom: "none",
+            borderColor: theme.palette.secondary[300],
+            paddingBottom: "8px",
+            paddingTop: "8px",
+            height: "auto",
           },
           "& .MuiDataGrid-columnHeaders": {
             backgroundColor: theme.palette.background.alt,
             color: theme.palette.secondary[100],
             borderBottom: "none",
+            maxHeight: "168px !important",
           },
           "& .MuiDataGrid-virtualScroller": {
             backgroundColor: theme.palette.primary.light,
@@ -96,6 +95,14 @@ const VendorList = () => {
           "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
             color: `${theme.palette.secondary[200]} !important`,
           },
+          "& .MuiDataGrid-columnHeaderTitle": {
+            whiteSpace: "normal",
+            lineHeight: "normal",
+          },
+          "& .MuiDataGrid-columnHeader": {
+            // Forced to use important since overriding inline styles
+            height: "unset !important",
+          },
         }}
       >
         <DataGrid
@@ -103,6 +110,9 @@ const VendorList = () => {
           rows={data.vendors}
           getRowId={(row) => row._id}
           columns={columns}
+          pageSize={20}
+          autoHeight={true}
+          getRowHeight={() => "auto"}
         />
       </Box>
     </Box>
