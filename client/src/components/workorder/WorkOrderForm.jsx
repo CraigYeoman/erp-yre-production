@@ -631,9 +631,9 @@ const WorkOrderForm = () => {
               }}
             />
           </Button>
-          {(customerImg || []).map((img) => {
+          {(customerImg || []).map(({ img }, index) => {
             return (
-              <Box mt="15px">
+              <Box mt="15px" key={index}>
                 <img
                   alt="not found"
                   width={"250px"}
