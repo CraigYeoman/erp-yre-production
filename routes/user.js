@@ -14,12 +14,14 @@ const {
   register,
   login,
   updateUser,
+  logout,
 } = require("../controllers/userController");
 const authenticateUser = require("../middleware/auth");
 
 // POST request for registering a User.
 router.route("/register").post(apiLimiter, register);
 router.route("/login").post(apiLimiter, login);
+router.route("/logout").post(logout);
 router.route("./update").patch(authenticateUser, updateUser);
 
 module.exports = router;

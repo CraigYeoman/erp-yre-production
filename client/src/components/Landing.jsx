@@ -1,10 +1,38 @@
 import logo from "../assets/img/yeomanRaceEnginesLogo.svg";
-
+import { useNavigate } from "react-router-dom";
 import { Link as RouterLink } from "react-router-dom";
 import { Box, useTheme, Link, Button, Typography } from "@mui/material";
+import { useAppContext } from "../context/appContext";
+import { useEffect } from "react";
 
 const Landing = () => {
   const theme = useTheme();
+  const navigate = useNavigate();
+  const { user, setupUser, isLoading } = useAppContext();
+
+  const currentUser = {
+    name: "guest",
+    email: "guest@gmail.com",
+    password: "secret",
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    setupUser({
+      currentUser,
+      endPoint: "login",
+      alertText: "Login Successful! Redirecting...",
+    });
+  };
+
+  useEffect(() => {
+    if (user) {
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
+    }
+  }, [user, navigate]);
+
   return (
     <Box
       sx={{
@@ -61,8 +89,19 @@ const Landing = () => {
                   Login/Register
                 </Link>
               </Button>
-              <Button variant="contained" type="submit">
-                Guest
+              <Button
+                variant="contained"
+                type="submit"
+                disable={isLoading.toString()}
+              >
+                <Link
+                  component={RouterLink}
+                  color="inherit"
+                  underline="none"
+                  onClick={onSubmit}
+                >
+                  Guest
+                </Link>
               </Button>
             </Box>
           </Box>

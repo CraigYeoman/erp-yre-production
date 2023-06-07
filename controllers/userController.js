@@ -3,6 +3,8 @@ const { StatusCodes } = require("http-status-codes");
 const user = require("../models/user");
 const BadRequestError = require("../errors/index").BadRequestError;
 const UnAuthenticatedError = require("../errors/index").UnAuthenticatedError;
+const connectDB = require("../db/connect");
+const mongoose = require("mongoose");
 
 const register = async (req, res) => {
   const { name, email, password } = req.body;
@@ -42,6 +44,16 @@ const login = async (req, res) => {
   if (!isPasswordCorrect) {
     throw new UnAuthenticatedError("Invalid Credentials");
   }
+  if (user.email === "yeomanraceengines@gmail.com") {
+    mongoose.disconnect(process.env.MONGO_URI);
+    try {
+      await connectDB(process.env.MONGO_URI_PRODUCTION, {
+        useNewUrlParser: true,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
   const token = user.createJWT();
   res.status(StatusCodes.OK).json({
     user: { email: user.email, name: user.name },
@@ -73,7 +85,14 @@ const getCurrentUser = async (req, res) => {
 };
 
 const logout = async (req, res) => {
-  res.send("logout");
+  mongoose.disconnect(process.env.MONGO_URI_PRODUCTION);
+
+  try {
+    await connectDB(process.env.MONGO_URI, { useNewUrlParser: true });
+  } catch (error) {
+    console.log(error);
+  }
+  res.status(StatusCodes.OK).json("logout complete");
 };
 
 module.exports = { register, login, updateUser, getCurrentUser, logout };

@@ -244,9 +244,12 @@ const AppProvider = ({ children }) => {
     }
   };
 
-  const logoutUser = () => {
+  const logoutUser = async () => {
     dispatch({ type: LOGOUT_USER });
     removeUserFromLocalStorage();
+    try {
+      await axios.post(`/api/v1/erp/user/logout`);
+    } catch (error) {}
   };
 
   const updateUser = async (currentUser) => {
