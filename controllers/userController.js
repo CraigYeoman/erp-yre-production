@@ -34,6 +34,15 @@ const login = async (req, res) => {
     throw new BadRequestError("please provide all values");
   }
 
+  if (email === "yeomanraceengines@gmail.com") {
+    mongoose.disconnect(process.env.MONGO_URI);
+    try {
+      await connectDB(process.env.MONGO_URI_PRODUCTION);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const user = await User.findOne({ email }).select("+password");
   if (!user) {
     throw new UnAuthenticatedError("Invalid Credentials");
@@ -44,16 +53,7 @@ const login = async (req, res) => {
   if (!isPasswordCorrect) {
     throw new UnAuthenticatedError("Invalid Credentials");
   }
-  if (user.email === "yeomanraceengines@gmail.com") {
-    mongoose.disconnect(process.env.MONGO_URI);
-    try {
-      await connectDB(process.env.MONGO_URI_PRODUCTION, {
-        useNewUrlParser: true,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  
   const token = user.createJWT();
   res.status(StatusCodes.OK).json({
     user: { email: user.email, name: user.name },
@@ -85,7 +85,7 @@ const getCurrentUser = async (req, res) => {
 };
 
 const logout = async (req, res) => {
-  mongoose.disconnect(process.env.MONGO_URI_PRODUCTION);
+  mongoose.disconnect();
 
   try {
     await connectDB(process.env.MONGO_URI, { useNewUrlParser: true });
