@@ -23,7 +23,7 @@ const Index = () => {
   }
 
   return (
-    <Box m="1.5rem 2.5rem">
+    <Box >
       <Header title="ERP APP" subtitle="Welcome" />
 
       <Box

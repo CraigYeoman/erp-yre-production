@@ -1,14 +1,20 @@
+import * as React from 'react';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
 import { useState, useEffect } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import {
-  Box,
-  useTheme,
-  Link,
-  Button,
-  Typography,
-  TextField,
-} from "@mui/material";
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import Link from '@mui/material/Link'
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import { createTheme, ThemeProvider, useTheme } from '@mui/material/styles';
 import Alert from "./Alert";
 import { useAppContext } from "../context/appContext";
 
@@ -19,149 +25,158 @@ const initialState = {
   isMember: true,
 };
 
-const Login = () => {
-  const theme = useTheme();
-  const navigate = useNavigate();
-  const [values, setValues] = useState(initialState);
-  const { user, isLoading, showAlert, displayAlert, setupUser } =
-    useAppContext();
-
-  const handleChange = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
+const guest = {
+    name: "guest",
+    email: "guest@gmail.com",
+    password: "secret",
+    isMember: true
   };
+// TODO remove, this demo shouldn't need to reset the theme.
 
-  const toggleMember = () => {
-    setValues({ ...values, isMember: !values.isMember });
-  };
+const defaultTheme = createTheme();
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    const { name, email, password, isMember } = values;
-    if (!email || !password || (!isMember && !name)) {
-      displayAlert();
-      return;
+export default function SignIn() {
+    const theme = useTheme();
+    const navigate = useNavigate();
+    const [values, setValues] = useState(initialState);
+    const { user, isLoading, showAlert, displayAlert, setupUser } =
+      useAppContext();
+  
+    const handleChange = (e) => {
+      setValues({ ...values, [e.target.name]: e.target.value });
+    };
+  
+    const toggleMember = () => {
+      setValues({ ...values, isMember: !values.isMember });
+    };
+    
+    const guestLogin = (e) => {
+        e.preventDefault();
+        e.preventDefault();
+        const { name, email, password, isMember } = guest;
+      if (!email || !password || (!isMember && !name)) {
+        displayAlert();
+        return;
+      }
+      const currentUser = { name, email, password };
+      if (isMember) {
+        setupUser({
+          currentUser,
+          endPoint: "login",
+          alertText: "Login Successful! Redirecting...",
+        });
+      } else {
+        setupUser({
+          currentUser,
+          endPoint: "register",
+          alertText: "User Created! Redirecting...",
+        });
+      }
     }
-    const currentUser = { name, email, password };
-    if (isMember) {
-      setupUser({
-        currentUser,
-        endPoint: "login",
-        alertText: "Login Successful! Redirecting...",
-      });
-    } else {
-      setupUser({
-        currentUser,
-        endPoint: "register",
-        alertText: "User Created! Redirecting...",
-      });
-    }
-  };
 
-  useEffect(() => {
-    if (user) {
-      setTimeout(() => {
-        navigate("/");
-      }, 3000);
-    }
-  }, [user, navigate]);
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      const { name, email, password, isMember } = values;
+      if (!email || !password || (!isMember && !name)) {
+        displayAlert();
+        return;
+      }
+      const currentUser = { name, email, password };
+      if (isMember) {
+        setupUser({
+          currentUser,
+          endPoint: "login",
+          alertText: "Login Successful! Redirecting...",
+        });
+      } else {
+        setupUser({
+          currentUser,
+          endPoint: "register",
+          alertText: "User Created! Redirecting...",
+        });
+      }
+    };
+  
+    useEffect(() => {
+      if (user) {
+        setTimeout(() => {
+          navigate("/");
+        }, 3000);
+      }
+    }, [user, navigate]);
 
   return (
-    <Box mt="2.5rem" sx={{ display: "flex", justifyContent: "center" }}>
-      <Box
-        width="300px"
-        sx={{
-          bgcolor: theme.palette.background.alt,
-          padding: "20px",
-          borderRadius: "15px",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <Typography
-          variant="h2"
-          fontWeight="bold"
-          color={theme.palette.secondary[300]}
-          sx={{ marginBottom: "15px" }}
+    <ThemeProvider theme={defaultTheme}>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
         >
-          ERP APP
-        </Typography>
-        <Typography
-          variant="h1"
-          fontWeight="bold"
-          color={theme.palette.secondary[100]}
-          sx={{ marginBottom: "15px" }}
-        >
-          {values.isMember ? "Login" : "Register"}
-        </Typography>
-        {showAlert && <Alert />}
-        {!values.isMember && (
-          <TextField
-            label="Name"
-            margin={"normal"}
-            required
-            name="name"
-            onChange={handleChange}
-            value={values.name}
-          />
-        )}
-        <TextField
-          label="Email"
-          margin={"normal"}
-          required
-          name="email"
-          onChange={handleChange}
-          value={values.email}
-        />
-        <TextField
-          label="Password"
-          margin={"normal"}
-          required
-          name="password"
-          type="password"
-          onChange={handleChange}
-          value={values.password}
-        />
-
-        <Button
-          sx={{ marginTop: "15px" }}
-          variant="contained"
-          type="submit"
-          disable={isLoading.toString()}
-        >
-          <Link
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign in
+          </Typography>
+          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email"
+              name="email"
+              autoComplete="email"
+              autoFocus
+              onChange={handleChange}
+              value={values.email}
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+              onChange={handleChange}
+              value={values.password}
+            />
+            <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            disable={isLoading.toString()}
+            sx={{ mt: 3, mb: 2 ,justifySelf: "right"}}
+            onClick={guestLogin}
+            >
+                Guest
+            </Button>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              disable={isLoading.toString()}
+              sx={{ mt: 3, mb: 2 }}
+            >
+              <Link
             component={RouterLink}
             color="inherit"
             underline="none"
-            onClick={onSubmit}
+            onClick={handleSubmit}
           >
-            Submit
+            Sign In
           </Link>
-        </Button>
-        <Typography
-          variant="body"
-          color={theme.palette.secondary[100]}
-          sx={{ marginTop: "15px" }}
-        >
-          {values.isMember ? "Need to Register?" : "Already Registered?"}
-          <Button
-            sx={[
-              { color: theme.palette.secondary[300] },
-              {
-                "&:hover": {
-                  backgroundColor: theme.palette.background.alt,
-                  textDecorationLine: "underline",
-                },
-              },
-            ]}
-            onClick={toggleMember}
-          >
-            {values.isMember ? "Register" : "Login"}
-          </Button>
-        </Typography>
-      </Box>
-    </Box>
+            </Button>
+          </Box>
+        </Box>
+      </Container>
+    </ThemeProvider>
   );
-};
-
-export default Login;
+}

@@ -13,7 +13,7 @@ export const tokensDark = {
     700: "#3d3d3d",
     800: "#292929",
     900: "#141414",
-    1000: "#222222", // manually adjusted
+    1000: "#000000", // manually adjusted
   },
   primary: {
     // blue
@@ -26,7 +26,6 @@ export const tokensDark = {
     700: "#141937",
     800: "#0d1025",
     900: "#070812",
-    1000: "#00abf2",
   },
   secondary: {
     // yellow
@@ -41,6 +40,14 @@ export const tokensDark = {
     800: "#665429",
     900: "#332a14",
   },
+  light: {
+    white: "rgb(255, 255, 255)",
+    blue: "rgb(30, 136, 229)",
+    darkBlue: "rgb(21, 101, 192)",
+    black: "rgb(18,25,38)",
+    grey: "rgb(54, 65, 82)",
+    offWhite: "rgb(238, 242, 246)"
+  }
 };
 
 // function that reverses the color palette
@@ -65,7 +72,7 @@ export const themeSettings = (mode) => {
   return {
     palette: {
       mode: mode,
-      ...(mode === "dark"
+      ...(mode === "light"
         ? {
             // palette values for dark mode
             primary: {
@@ -90,21 +97,21 @@ export const themeSettings = (mode) => {
             // palette values for light mode
             primary: {
               ...tokensLight.primary,
-              main: tokensDark.grey[50],
-              light: tokensDark.grey[100],
+              main: tokensDark.light.blue,
+              dark: tokensDark.light.darkBlue,
             },
             secondary: {
               ...tokensLight.secondary,
-              main: tokensDark.secondary[600],
-              light: tokensDark.secondary[700],
+              main: tokensDark.light.black,
             },
             neutral: {
               ...tokensLight.grey,
-              main: tokensDark.grey[500],
+              main: tokensDark.light.grey,
+              light: tokensDark.light.offWhite
             },
             background: {
-              default: tokensDark.grey[0],
-              alt: tokensDark.grey[50],
+              default: tokensDark.light.white,
+              alt: tokensDark.light.offWhite,
             },
           }),
     },

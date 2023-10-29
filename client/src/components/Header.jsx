@@ -14,6 +14,8 @@ const Header = ({ title, subtitle }) => {
         justifyContent: "space-between",
         alignItems: "center",
         flexDirection: "row",
+        backgroundColor: theme.palette.background.default,
+        padding: ".9rem 2.5rem"
       }}
     >
       <Box
@@ -32,13 +34,13 @@ const Header = ({ title, subtitle }) => {
         <Box>
           <Typography
             variant="h2"
-            color={theme.palette.secondary[100]}
+            color={theme.palette.secondary.main}
             fontWeight="bold"
             sx={{ mb: "5px" }}
           >
             {title}
           </Typography>
-          <Typography variant="h5" color={theme.palette.secondary[300]}>
+          <Typography variant="h5" color={theme.palette.neutral.main}>
             {subtitle}
           </Typography>
         </Box>

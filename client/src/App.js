@@ -1,6 +1,6 @@
 import Index from "./components/Index";
 import Landing from "./components/Landing";
-import Login from "./components/Login";
+import Login from "./components/LoginNew";
 import ProtectedRoute from "./components/ProtectedRoute";
 import {
   CustomerDetail,

@@ -182,8 +182,8 @@ function Nav() {
           sx={{
             width: drawerWidth,
             "& .MuiDrawer-paper": {
-              color: theme.palette.secondary[200],
-              backgroundColor: theme.palette.background.alt,
+              color: theme.palette.secondary.main,
+              backgroundColor: theme.palette.background.default,
               boxSixing: "border-box",
               borderWidth: isNonMobile ? 0 : "2px",
               width: drawerWidth,
@@ -226,12 +226,12 @@ function Nav() {
                       sx={{
                         backgroundColor:
                           active === lcText
-                            ? theme.palette.secondary[300]
+                            ? theme.palette.primary.main
                             : "transparent",
                         color:
                           active === lcText
-                            ? theme.palette.primary[600]
-                            : theme.palette.secondary[100],
+                          ? theme.palette.secondary.main
+                          : theme.palette.neutral.main,
                         height: "30px",
                       }}
                     >
@@ -240,8 +240,8 @@ function Nav() {
                           ml: "2rem",
                           color:
                             active === lcText
-                              ? theme.palette.primary[600]
-                              : theme.palette.secondary[200],
+                              ? theme.palette.secondary.main
+                              : theme.palette.neutral.main,
                         }}
                       >
                         {icon}

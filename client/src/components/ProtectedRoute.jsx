@@ -4,7 +4,7 @@ import { Navigate } from "react-router-dom";
 const ProetectedRoute = ({ children }) => {
   const { user } = useAppContext();
   if (!user) {
-    return <Navigate to="/landing" />;
+    return <Navigate to="/login" />;
   }
   return children;
 };
