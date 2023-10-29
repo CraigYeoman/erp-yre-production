@@ -3,6 +3,8 @@ import { useAppContext } from "../context/appContext";
 import { Box, useTheme, Typography } from "@mui/material";
 import IndexGrid from "./IndexGrid";
 import Header from "./Header";
+import DashboardList from "./DashboardList"
+import PieActiveArc from "./PieChart";
 
 const Index = () => {
   const { getData, data, updatePath } = useAppContext();
@@ -21,7 +23,7 @@ const Index = () => {
       </section>
     );
   }
-
+console.log(data.countArray)
   return (
     <Box >
       <Header title="ERP APP" subtitle="Welcome" />
@@ -45,7 +47,7 @@ const Index = () => {
           borderRadius="0.55rem"
           p="1.25rem 1rem"
         >
-          {data.countArray.map((jobType) => (
+          {/* {data.countArray.map((jobType) => (
             <Box key={jobType.name}>
               <Typography
                 variant="h4"
@@ -55,7 +57,7 @@ const Index = () => {
                 {jobType.name}: {jobType.count}
               </Typography>
             </Box>
-          ))}
+          ))} */}
         </Box>
       </Box>
       <Box height="75vh">
@@ -67,6 +69,8 @@ const Index = () => {
             gap: "15px",
           }}
         >
+          <DashboardList data={data.countArray}></DashboardList>
+          <PieActiveArc />
           <IndexGrid name="Past Due" data={data.past_due} />
           <IndexGrid name="Due This Week" data={data.due_this_week} />
           <IndexGrid name="Due Next Week" data={data.due_next_week} />
