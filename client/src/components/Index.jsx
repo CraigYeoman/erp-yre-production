@@ -28,13 +28,8 @@ console.log(data.countArray)
     <Box >
       <Header title="ERP APP" subtitle="Welcome" />
 
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-        <Box
+      
+        {/* <Box
           mt="20px"
           gap="1rem"
           sx={{
@@ -46,7 +41,7 @@ console.log(data.countArray)
           backgroundColor={theme.palette.background.alt}
           borderRadius="0.55rem"
           p="1.25rem 1rem"
-        >
+        > */}
           {/* {data.countArray.map((jobType) => (
             <Box key={jobType.name}>
               <Typography
@@ -58,19 +53,22 @@ console.log(data.countArray)
               </Typography>
             </Box>
           ))} */}
-        </Box>
-      </Box>
+        {/* </Box> */}
+      
       <Box height="75vh">
         <Box
           sx={{
             display: "flex",
             flexWrap: "wrap",
-            justifyContent: "center",
+            justifyContent: "space-evenly",
             gap: "15px",
+            padding: "25px",
+            alignItems: "center"
           }}
         >
           <DashboardList data={data.countArray}></DashboardList>
-          <PieActiveArc />
+          <Box width="500px"><PieActiveArc data={data.countArray}/></Box>
+          
           <IndexGrid name="Past Due" data={data.past_due} />
           <IndexGrid name="Due This Week" data={data.due_this_week} />
           <IndexGrid name="Due Next Week" data={data.due_next_week} />

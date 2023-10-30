@@ -191,7 +191,7 @@ function Nav() {
           }}
         >
           <Box width="100%">
-            <Box m="1.1rem 2rem 1.1rem 2.5rem">
+            <Box m="1.1rem 3rem 0 3rem">
               <FlexBetween color={theme.palette.secondary.main}>
                 <Box display="flex" alignItems="center" gap="0.5rem">
                   <Typography variant="h4" fontWeight="bold">
@@ -207,7 +207,7 @@ function Nav() {
                     <Typography
                       key={text}
                       fontWeight="bold"
-                      sx={{ m: ".75rem 0 .75rem 3rem" }}
+                      sx={{ m: ".75rem 0 .5rem 3rem" }}
                     >
                       {text}
                     </Typography>
@@ -237,6 +237,7 @@ function Nav() {
                     >
                       <ListItemIcon
                         sx={{
+                          minWidth: "25px",
                           ml: "2rem",
                           color:
                             active === lcText
