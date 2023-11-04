@@ -67,8 +67,10 @@ console.log(data.countArray)
           }}
         >
           <DashboardList data={data.countArray}></DashboardList>
-          <Box width="500px"><PieActiveArc data={data.countArray}/></Box>
-          
+          <Box width="550px"
+            sx={{ padding: "25px", backgroundColor: theme.palette.background.default, borderRadius: "10px"}}>
+            <PieActiveArc data={data.countArray}/>
+          </Box>
           <IndexGrid name="Past Due" data={data.past_due} />
           <IndexGrid name="Due This Week" data={data.due_this_week} />
           <IndexGrid name="Due Next Week" data={data.due_next_week} />

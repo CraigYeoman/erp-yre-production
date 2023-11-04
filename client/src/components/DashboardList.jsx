@@ -7,7 +7,7 @@ const DashboardList = ({data}) => {
   console.log(data)
   const theme = useTheme();
   return (
-    <Box sx={{backgroundColor: theme.palette.background.default, padding: "10px", height: "fit-content"}}>
+    <Box sx={{backgroundColor: theme.palette.background.default, padding: "10px", height: "fit-content", borderRadius: "10px"}}>
       <Grid container sx={{ justifyContent: "center", display: "flex", mb: "5px" }} >
         <Grid item >
         <Typography

@@ -85,20 +85,22 @@ const IndexGrid = ({ name, data }) => {
   ];
 
   return (
-    <Box mt="1.5rem">
+    <Box mt="1.5rem" sx={{backgroundColor: theme.palette.background.default, borderRadius: "10px", padding: "10px"}}>
       <Box
         mt="15px"
         width="460px"
         sx={{
           "& .MuiDataGrid-root": {
             border: "none",
+            
           },
           "& .MuiDataGrid-cell": {
-            borderBottom: "none",
+            backgroundColor: theme.palette.background.default,
+            border: "none"
           },
           "& .MuiDataGrid-columnHeaders": {
-            backgroundColor: theme.palette.background.alt,
-            color: theme.palette.secondary[100],
+            backgroundColor: theme.palette.background.default,
+            color: theme.palette.secondary.main,
             borderBottom: "none",
           },
           "& .MuiDataGrid-virtualScroller": {
@@ -106,16 +108,16 @@ const IndexGrid = ({ name, data }) => {
           },
           "& .MuiDataGrid-footerContainer": {
             backgroundColor: theme.palette.background.alt,
-            color: theme.palette.secondary[100],
-            borderTop: "none",
+            color: theme.palette.secondary.main,
+            border: "none"
           },
           "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
             color: `${theme.palette.secondary[200]} !important`,
           },
         }}
       >
-        <FlexBetween>
-          <Typography variant="h6" sx={{ color: theme.palette.secondary[100] }}>
+        <FlexBetween sx={{backgroundColor: theme.palette.background.default, justifyContent: "center"}}>
+          <Typography variant="h5" fontWeight="bold" sx={{ color: theme.palette.secondary.main  }}>
             {name}
           </Typography>
         </FlexBetween>
@@ -127,6 +129,7 @@ const IndexGrid = ({ name, data }) => {
           autoHeight={true}
           rowHeight={20}
           hideFooter={true}
+          sx={{color: theme.palette.secondary.main}}
         />
       </Box>
     </Box>

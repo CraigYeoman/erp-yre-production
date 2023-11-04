@@ -45,6 +45,7 @@ export default function PieActiveArc({data}) {
             fill: theme.palette.secondary.main,
           },
         },
+        title: "hi"
       }}
       height={300} maxWidth={500}
     />

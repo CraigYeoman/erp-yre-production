@@ -35,7 +35,7 @@ const initialState = {
   showAlert: false,
   alertText: "",
   alertType: "",
-  mode: "dark",
+  mode: "light",
   user: user ? JSON.parse(user) : null,
   token: token,
   rootUrl: "http://localhost:5000",

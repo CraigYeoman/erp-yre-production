@@ -132,46 +132,55 @@ const WorkOrderList = () => {
   ];
 
   return (
-    <Box m="1.5rem 2.5rem">
+    <Box>
       <Header title="Work Orders" subtitle="List of Work Orders" />
       <Box
-        mt="40px"
+        m="1.5rem 2.5rem"
         height="75vh"
         sx={{
           "& .MuiDataGrid-root": {
             border: "none",
+
+          },
+          "& .MuiDataGrid-main": {
+            padding: "10px",
+            borderRadius: "10px",
+            backgroundColor: theme.palette.background.default,
           },
           "& .MuiDataGrid-cell": {
-            // borderBottom: "none",
-            borderColor: theme.palette.secondary[300],
+            border: "none",
+            backgroundColor: theme.palette.background.default,
             paddingBottom: "8px",
             paddingTop: "8px",
             height: "auto",
+            color:theme.palette.secondary.main
           },
           "& .MuiDataGrid-columnHeaders": {
-            backgroundColor: theme.palette.background.alt,
-            color: theme.palette.secondary[100],
+            backgroundColor: theme.palette.background.default,
+            color: theme.palette.secondary.main,
             borderBottom: "none",
             maxHeight: "168px !important",
           },
           "& .MuiDataGrid-virtualScroller": {
-            backgroundColor: theme.palette.primary.light,
+            backgroundColor: theme.palette.background.default,
           },
           "& .MuiDataGrid-footerContainer": {
             backgroundColor: theme.palette.background.alt,
-            color: theme.palette.secondary[100],
+            color: theme.palette.secondary.main,
             borderTop: "none",
           },
           "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
-            color: `${theme.palette.secondary[200]} !important`,
+            color: `${theme.palette.secondary.main} !important`,
           },
           "& .MuiDataGrid-columnHeaderTitle": {
             whiteSpace: "normal",
             lineHeight: "normal",
+            fontWeight: "bold"
           },
           "& .MuiDataGrid-columnHeader": {
             // Forced to use important since overriding inline styles
             height: "unset !important",
+            
           },
         }}
       >
