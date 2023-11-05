@@ -8,8 +8,13 @@ const Format = () => {
   return (
     <Box display={isNonMobile ? "flex" : "block"} width="100%" height="100%">
       <Nav />
-      <Box flexGrow={1} sx={{ backgroundColor: theme.palette.background.alt,
-        borderRadius: "8px",}}>
+      <Box
+        flexGrow={1}
+        sx={{
+          backgroundColor: theme.palette.background.alt,
+          borderRadius: "8px",
+        }}
+      >
         <Outlet />
       </Box>
     </Box>

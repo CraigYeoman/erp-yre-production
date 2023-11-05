@@ -22,36 +22,42 @@ const LaborCategory = () => {
   }
 
   return (
-    <Box m="1.5rem 2.5rem">
+    <Box>
       <Header title={"Labor Categories"} subtitle={""} />
-      <Typography
-        variant="h4"
-        fontWeight="bold"
-        color={theme.palette.secondary[300]}
-        sx={{ marginBottom: "15px", marginTop: "15px" }}
-      >
-        <Link component={RouterLink} color="inherit" to={`/laborcategoryform/`}>
-          New Category
-        </Link>
-      </Typography>
-      {data.laborCategories.map((laborCategory) => {
-        const { name, _id } = laborCategory;
-        return (
-          <Box className="job-container" mb="5px" key={_id}>
-            <Typography variant="h5" color={theme.palette.secondary[100]}>
-              <Link
-                component={RouterLink}
-                color="inherit"
-                underline="none"
-                onClick={() => getDetail(_id, "laborcategory")}
-                to={`/laborcategorydetail/${_id}`}
-              >
-                {name}
-              </Link>
-            </Typography>
-          </Box>
-        );
-      })}
+      <Box m="1.5rem 2.5rem">
+        <Typography
+          variant="h4"
+          fontWeight="bold"
+          color={theme.palette.secondary.main}
+          sx={{ marginBottom: "15px", marginTop: "15px" }}
+        >
+          <Link
+            component={RouterLink}
+            color="inherit"
+            to={`/laborcategoryform/`}
+          >
+            New Category
+          </Link>
+        </Typography>
+        {data.laborCategories.map((laborCategory) => {
+          const { name, _id } = laborCategory;
+          return (
+            <Box className="job-container" mb="5px" key={_id}>
+              <Typography variant="h5" color={theme.palette.secondary.main}>
+                <Link
+                  component={RouterLink}
+                  color="inherit"
+                  underline="none"
+                  onClick={() => getDetail(_id, "laborcategory")}
+                  to={`/laborcategorydetail/${_id}`}
+                >
+                  {name}
+                </Link>
+              </Typography>
+            </Box>
+          );
+        })}
+      </Box>
     </Box>
   );
 };

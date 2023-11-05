@@ -136,11 +136,10 @@ const WorkOrderList = () => {
       <Header title="Work Orders" subtitle="List of Work Orders" />
       <Box
         m="1.5rem 2.5rem"
-        height="75vh"
+        height="625px"
         sx={{
           "& .MuiDataGrid-root": {
             border: "none",
-
           },
           "& .MuiDataGrid-main": {
             padding: "10px",
@@ -150,10 +149,10 @@ const WorkOrderList = () => {
           "& .MuiDataGrid-cell": {
             border: "none",
             backgroundColor: theme.palette.background.default,
-            paddingBottom: "8px",
-            paddingTop: "8px",
-            height: "auto",
-            color:theme.palette.secondary.main
+            paddingBottom: "3px",
+            paddingTop: "3px",
+
+            color: theme.palette.secondary.main,
           },
           "& .MuiDataGrid-columnHeaders": {
             backgroundColor: theme.palette.background.default,
@@ -175,12 +174,11 @@ const WorkOrderList = () => {
           "& .MuiDataGrid-columnHeaderTitle": {
             whiteSpace: "normal",
             lineHeight: "normal",
-            fontWeight: "bold"
+            fontWeight: "bold",
           },
           "& .MuiDataGrid-columnHeader": {
             // Forced to use important since overriding inline styles
             height: "unset !important",
-            
           },
         }}
       >
@@ -257,9 +255,16 @@ const WorkOrderList = () => {
           rows={data.workOrders}
           getRowId={(row) => row._id}
           columns={columns}
-          pageSize={20}
-          autoHeight={true}
-          getRowHeight={() => "auto"}
+          pageSize={10}
+          height="600px"
+          initialState={{
+            pagination: {
+              paginationModel: {
+                pageSize: 10,
+              },
+            },
+          }}
+          pageSizeOptions={[10]}
         />
       </Box>
     </Box>

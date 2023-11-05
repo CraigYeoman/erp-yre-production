@@ -15,7 +15,7 @@ const Header = ({ title, subtitle }) => {
         alignItems: "center",
         flexDirection: "row",
         backgroundColor: theme.palette.background.default,
-        padding: ".9rem 2rem"
+        padding: ".9rem 2rem",
       }}
     >
       <Box

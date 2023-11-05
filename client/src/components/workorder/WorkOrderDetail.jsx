@@ -68,251 +68,265 @@ const WorkOrderDetail = () => {
   let grandTotal = total + tax;
 
   return (
-    <Box m="1.5rem 2.5rem">
+    <Box>
       <Header title={work_order_number} subtitle={jobType.name} />
-      <Box mt="15px">
-        <Button variant="contained">
-          <Link
-            component={RouterLink}
-            color="inherit"
-            underline="none"
-            onClick={() => {
-              getDetail(_id, "workorders");
-              getFormData("workorders");
-            }}
-            to={`/workordereditform/${_id}`}
+      <Box m="1.5rem 2.5rem">
+        <Box>
+          <Button variant="contained">
+            <Link
+              component={RouterLink}
+              color="inherit"
+              underline="none"
+              onClick={() => {
+                getDetail(_id, "workorders");
+                getFormData("workorders");
+              }}
+              to={`/workordereditform/${_id}`}
+            >
+              Edit
+            </Link>
+          </Button>
+          <Button
+            variant="contained"
+            onClick={() => setDeleteOrder(true)}
+            sx={{ marginLeft: "15px" }}
           >
-            Edit
-          </Link>
-        </Button>
-        <Button
-          variant="contained"
-          onClick={() => setDeleteOrder(true)}
-          sx={{ marginLeft: "15px" }}
+            Delete
+          </Button>
+          <Button
+            variant="contained"
+            onClick={() => setCompleteOrder(true)}
+            sx={{ marginLeft: "15px" }}
+          >
+            Complete
+          </Button>
+          {deleteOrder && (
+            <Box mt="15px">
+              Are you sure you want to delete?
+              <Button
+                variant="contained"
+                onClick={() =>
+                  onSubmitPost("", "workorders", _id, "delete-post")
+                }
+                sx={{ marginLeft: "15px" }}
+              >
+                Delete
+              </Button>
+            </Box>
+          )}
+          {completeOrder && (
+            <Box mt="15px">
+              Mark work order as complete
+              <Button
+                variant="contained"
+                onClick={() =>
+                  onSubmitPost("", "workorders", _id, "complete-post")
+                }
+                sx={{ marginLeft: "15px" }}
+              >
+                Complete
+              </Button>
+            </Box>
+          )}
+          {response && <Box>{responseText.msg}</Box>}
+          {responseError && <Box>{responseErrorText.msg}</Box>}
+        </Box>
+        <Box
+          mt="15px"
+          sx={{
+            borderRadius: "5px",
+            border: 1,
+            padding: "8px",
+            bgcolor: theme.palette.background.alt,
+          }}
         >
-          Delete
-        </Button>
-        <Button
-          variant="contained"
-          onClick={() => setCompleteOrder(true)}
-          sx={{ marginLeft: "15px" }}
-        >
-          Complete
-        </Button>
-        {deleteOrder && (
-          <Box mt="15px">
-            Are you sure you want to delete?
-            <Button
-              variant="contained"
-              onClick={() => onSubmitPost("", "workorders", _id, "delete-post")}
-              sx={{ marginLeft: "15px" }}
-            >
-              Delete
-            </Button>
-          </Box>
-        )}
-        {completeOrder && (
-          <Box mt="15px">
-            Mark work order as complete
-            <Button
-              variant="contained"
-              onClick={() =>
-                onSubmitPost("", "workorders", _id, "complete-post")
-              }
-              sx={{ marginLeft: "15px" }}
-            >
-              Complete
-            </Button>
-          </Box>
-        )}
-        {response && <Box>{responseText.msg}</Box>}
-        {responseError && <Box>{responseErrorText.msg}</Box>}
-      </Box>
-      <Box
-        mt="15px"
-        sx={{
-          borderRadius: "5px",
-          border: 1,
-          padding: "8px",
-          bgcolor: theme.palette.background.alt,
-        }}
-      >
-        <Typography
-          variant="h5"
-          fontWeight="bold"
-          color={theme.palette.secondary[300]}
-        >
-          Dates
-        </Typography>
-        <p>Status: {complete ? "Complete" : "In Process"}</p>
-        <p>Date Received: {DateTime.fromISO(date_received).toFormat("D")}</p>
-        <p>Date Due: {DateTime.fromISO(date_due).toFormat("D")}</p>
+          <Typography
+            variant="h5"
+            fontWeight="bold"
+            color={theme.palette.secondarymain}
+          >
+            Dates
+          </Typography>
+          <p>Status: {complete ? "Complete" : "In Process"}</p>
+          <p>Date Received: {DateTime.fromISO(date_received).toFormat("D")}</p>
+          <p>Date Due: {DateTime.fromISO(date_due).toFormat("D")}</p>
 
-        {complete ? (
-          <p>Date Finished: {DateTime.fromISO(date_finished).toFormat("D")}</p>
+          {complete ? (
+            <p>
+              Date Finished: {DateTime.fromISO(date_finished).toFormat("D")}
+            </p>
+          ) : (
+            ""
+          )}
+        </Box>
+        <Box
+          mt="15px"
+          sx={{
+            borderRadius: "5px",
+            border: 1,
+            padding: "8px",
+            bgcolor: theme.palette.background.alt,
+          }}
+        >
+          <Typography
+            variant="h5"
+            fontWeight="bold"
+            color={theme.palette.secondarymain}
+          >
+            Customer
+          </Typography>
+          <p>
+            <Link
+              component={RouterLink}
+              color="inherit"
+              onClick={() => getDetail(customer._id, "customers")}
+              to={`/customerdetail/${customer._id}`}
+            >
+              {customer.first_name} {customer.last_name}
+            </Link>
+          </p>
+          <p>Phone Number : {formatPhoneNumber(customer.phone_number)}</p>
+          <p>Email: {customer.email}</p>
+        </Box>
+        <Box
+          mt="15px"
+          sx={{
+            borderRadius: "5px",
+            border: 1,
+            padding: "8px",
+            bgcolor: theme.palette.background.alt,
+          }}
+        >
+          <Typography
+            variant="h5"
+            fontWeight="bold"
+            color={theme.palette.secondarymain}
+          >
+            Totals
+          </Typography>
+          <p>Labor Total - ${laborPrice.toFixed(2)}</p>
+          <p>Parts Total - ${partsPrice.toFixed(2)}</p>
+          <p>Total - ${total.toFixed(2)}</p>
+          <p>Tax - ${tax.toFixed(2)}</p>
+          <p>Grand Total - ${grandTotal.toFixed(2)}</p>
+          <p>Deposit - ${deposit.toFixed(2)}</p>
+          <p>Est. Due - ${(grandTotal - deposit).toFixed(2)}</p>
+        </Box>
+        <Box
+          mt="15px"
+          sx={{
+            borderRadius: "5px",
+            border: 1,
+            padding: "8px",
+            bgcolor: theme.palette.background.alt,
+          }}
+        >
+          <Typography
+            variant="h5"
+            fontWeight="bold"
+            color={theme.palette.secondarymain}
+          >
+            Notes
+          </Typography>
+          <p>{notes}</p>
+        </Box>
+        {labor.length === 0 ? (
+          <option></option>
         ) : (
-          ""
+          <Box
+            mt="15px"
+            sx={{
+              borderRadius: "5px",
+              border: 1,
+              padding: "8px",
+              bgcolor: theme.palette.background.alt,
+            }}
+          >
+            <Typography
+              variant="h5"
+              fontWeight="bold"
+              color={theme.palette.secondarymain}
+            >
+              Labor
+            </Typography>
+            {labor.map((labor) => {
+              return (
+                <p key={labor.name}>
+                  {labor.name} - ${labor.price.toFixed(2)}
+                </p>
+              );
+            })}
+          </Box>
+        )}
+        {parts.length === 0 ? (
+          <option></option>
+        ) : (
+          <Box
+            mt="15px"
+            sx={{
+              borderRadius: "5px",
+              border: 1,
+              padding: "8px",
+              bgcolor: theme.palette.background.alt,
+            }}
+          >
+            <Typography
+              variant="h5"
+              fontWeight="bold"
+              color={theme.palette.secondarymain}
+            >
+              Parts
+            </Typography>
+            {parts.map((part) => {
+              return (
+                <p key={parts.name}>
+                  {part.name} - ${part.customer_price.toFixed(2)}
+                </p>
+              );
+            })}
+          </Box>
+        )}
+        {accessories.length === 0 ? (
+          <option></option>
+        ) : (
+          <Box
+            mt="15px"
+            sx={{
+              borderRadius: "5px",
+              border: 1,
+              padding: "8px",
+              bgcolor: theme.palette.background.alt,
+            }}
+          >
+            <Typography
+              variant="h5"
+              fontWeight="bold"
+              color={theme.palette.secondarymain}
+            >
+              Customer Accessories
+            </Typography>
+            {accessories.map((accessory) => {
+              return <p key={accessory._id}>{accessory.name}</p>;
+            })}
+          </Box>
+        )}
+        {images.length === 0 ? (
+          <option></option>
+        ) : (
+          <Box
+            mt="15px"
+            mb="15px"
+            sx={{
+              display: "flex",
+              gap: "15px",
+            }}
+          >
+            {images.map((pic) => {
+              return <img src={`/${pic}`} alt="img" width="250px" />;
+            })}
+          </Box>
         )}
       </Box>
-      <Box
-        mt="15px"
-        sx={{
-          borderRadius: "5px",
-          border: 1,
-          padding: "8px",
-          bgcolor: theme.palette.background.alt,
-        }}
-      >
-        <Typography
-          variant="h5"
-          fontWeight="bold"
-          color={theme.palette.secondary[300]}
-        >
-          Customer
-        </Typography>
-        <p>
-          <Link
-            component={RouterLink}
-            color="inherit"
-            onClick={() => getDetail(customer._id, "customers")}
-            to={`/customerdetail/${customer._id}`}
-          >
-            {customer.first_name} {customer.last_name}
-          </Link>
-        </p>
-        <p>Phone Number : {formatPhoneNumber(customer.phone_number)}</p>
-        <p>Email: {customer.email}</p>
-      </Box>
-      <Box
-        mt="15px"
-        sx={{
-          borderRadius: "5px",
-          border: 1,
-          padding: "8px",
-          bgcolor: theme.palette.background.alt,
-        }}
-      >
-        <Typography
-          variant="h5"
-          fontWeight="bold"
-          color={theme.palette.secondary[300]}
-        >
-          Totals
-        </Typography>
-        <p>Labor Total - ${laborPrice.toFixed(2)}</p>
-        <p>Parts Total - ${partsPrice.toFixed(2)}</p>
-        <p>Total - ${total.toFixed(2)}</p>
-        <p>Tax - ${tax.toFixed(2)}</p>
-        <p>Grand Total - ${grandTotal.toFixed(2)}</p>
-        <p>Deposit - ${deposit.toFixed(2)}</p>
-        <p>Est. Due - ${(grandTotal - deposit).toFixed(2)}</p>
-      </Box>
-      <Box mt="15px">
-        <Typography
-          variant="h5"
-          fontWeight="bold"
-          color={theme.palette.secondary[300]}
-        >
-          Notes
-        </Typography>
-        <p>{notes}</p>
-      </Box>
-      {labor.length === 0 ? (
-        <option></option>
-      ) : (
-        <Box
-          mt="15px"
-          sx={{
-            borderRadius: "5px",
-            border: 1,
-            padding: "8px",
-            bgcolor: theme.palette.background.alt,
-          }}
-        >
-          <Typography
-            variant="h5"
-            fontWeight="bold"
-            color={theme.palette.secondary[300]}
-          >
-            Labor
-          </Typography>
-          {labor.map((labor) => {
-            return (
-              <p key={labor.name}>
-                {labor.name} - ${labor.price.toFixed(2)}
-              </p>
-            );
-          })}
-        </Box>
-      )}
-      {parts.length === 0 ? (
-        <option></option>
-      ) : (
-        <Box
-          mt="15px"
-          sx={{
-            borderRadius: "5px",
-            border: 1,
-            padding: "8px",
-            bgcolor: theme.palette.background.alt,
-          }}
-        >
-          <Typography
-            variant="h5"
-            fontWeight="bold"
-            color={theme.palette.secondary[300]}
-          >
-            Parts
-          </Typography>
-          {parts.map((part) => {
-            return (
-              <p key={parts.name}>
-                {part.name} - ${part.customer_price.toFixed(2)}
-              </p>
-            );
-          })}
-        </Box>
-      )}
-      {accessories.length === 0 ? (
-        <option></option>
-      ) : (
-        <Box
-          mt="15px"
-          sx={{
-            borderRadius: "5px",
-            border: 1,
-            padding: "8px",
-            bgcolor: theme.palette.background.alt,
-          }}
-        >
-          <Typography
-            variant="h5"
-            fontWeight="bold"
-            color={theme.palette.secondary[300]}
-          >
-            Customer Accessories
-          </Typography>
-          {accessories.map((accessory) => {
-            return <p key={accessory._id}>{accessory.name}</p>;
-          })}
-        </Box>
-      )}
-      {images.length === 0 ? (
-        <option></option>
-      ) : (
-        <Box
-          mt="15px"
-          mb="15px"
-          sx={{
-            display: "flex",
-            gap: "15px",
-          }}
-        >
-          {images.map((pic) => {
-            return <img src={`/${pic}`} alt="img" width="250px" />;
-          })}
-        </Box>
-      )}
     </Box>
   );
 };

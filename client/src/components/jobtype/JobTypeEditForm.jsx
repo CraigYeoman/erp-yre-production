@@ -61,14 +61,16 @@ const JobTypeEditForm = () => {
   }
 
   return (
-    <Box m="1.5rem 2.5rem">
+    <Box>
       <Header title="Edit Job Type" subtitle="Fill out form below" />
       <form onSubmit={onSubmit}>
         <Box
-          mt="1rem"
-          mb="1rem"
+          m="1.5rem 2.5rem"
           sx={{
             display: "flex",
+            flexDirection: "column",
+            width: "240px",
+            gap: "5px;",
           }}
         >
           <TextField
@@ -79,17 +81,17 @@ const JobTypeEditForm = () => {
             value={values.name}
             onChange={handleChange}
           />
+          <Button variant="contained" type="submit" sx={{ marginTop: "15px" }}>
+            Submit
+          </Button>
         </Box>
-        <Button variant="contained" type="submit">
-          Submit
-        </Button>
       </form>
 
       {response && (
-        <Box mt="20px">
+        <Box m="1.5rem 2.5rem">
           <Typography
             variant="h3"
-            color={theme.palette.secondary[300]}
+            color={theme.palette.secondarymain}
             fontWeight="bold"
             sx={{ mb: "5px" }}
           >
@@ -120,7 +122,7 @@ const JobTypeEditForm = () => {
               >
                 <Typography
                   variant="h3"
-                  color={theme.palette.secondary[100]}
+                  color={theme.palette.secondarymain}
                   fontWeight="bold"
                   sx={{ mb: "5px" }}
                 >
@@ -139,7 +141,7 @@ const JobTypeEditForm = () => {
               >
                 <Typography
                   variant="h3"
-                  color={theme.palette.secondary[100]}
+                  color={theme.palette.secondarymain}
                   fontWeight="bold"
                   sx={{ mb: "5px" }}
                 >

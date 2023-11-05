@@ -49,11 +49,10 @@ const JobTypeList = () => {
       <Header title="Job Types" subtitle="List of Job Types" />
       <Box
         m="1.5rem 2.5rem"
-        height="75vh"
+        height="80vh"
         sx={{
           "& .MuiDataGrid-root": {
             border: "none",
-
           },
           "& .MuiDataGrid-main": {
             padding: "10px",
@@ -66,7 +65,7 @@ const JobTypeList = () => {
             paddingBottom: "8px",
             paddingTop: "8px",
             height: "auto",
-            color:theme.palette.secondary.main
+            color: theme.palette.secondary.main,
           },
           "& .MuiDataGrid-columnHeaders": {
             backgroundColor: theme.palette.background.default,
@@ -88,12 +87,11 @@ const JobTypeList = () => {
           "& .MuiDataGrid-columnHeaderTitle": {
             whiteSpace: "normal",
             lineHeight: "normal",
-            fontWeight: "bold"
+            fontWeight: "bold",
           },
           "& .MuiDataGrid-columnHeader": {
             // Forced to use important since overriding inline styles
             height: "unset !important",
-            
           },
         }}
       >

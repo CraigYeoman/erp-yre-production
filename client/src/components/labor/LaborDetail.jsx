@@ -45,82 +45,84 @@ const LaborDetail = () => {
   const { name, price, _id, laborCategory } = data.labor_detail;
 
   return (
-    <Box m="1.5rem 2.5rem">
+    <Box>
       <Header title={"Labor Detail"} subtitle={""} />
-      <Box component="span" sx={{ display: "inline-block", mx: "2px" }}>
-        <Card
-          variant="outlined"
-          sx={{
-            bgcolor: theme.palette.background.alt,
-            marginTop: "15px",
-            marginBottom: "15px",
-          }}
-        >
-          <CardContent>
-            <Typography
-              sx={{ marginBottom: "5px" }}
-              variant="h5"
-              fontWeight="bold"
-              color={theme.palette.secondary[300]}
-            >
-              {name}
-            </Typography>
-            <Typography
-              sx={{ marginBottom: "5px" }}
-              variant="body"
-              color={theme.palette.secondary[100]}
-            >
-              Customer Price: ${price}
-              <br />
-            </Typography>
-            <Typography
-              sx={{ marginBottom: "5px" }}
-              variant="body"
-              color={theme.palette.secondary[100]}
-            >
-              Category: {laborCategory.name}
-            </Typography>
-          </CardContent>
-        </Card>
-      </Box>
-      <Box mt="15px">
-        <Button variant="contained">
-          <Link
-            component={RouterLink}
-            color="inherit"
-            underline="none"
-            onClick={() => {
-              getDetail(_id, "labor");
-              getFormData("labor");
+      <Box m="1.5rem 2.5rem">
+        <Box component="span" sx={{ display: "inline-block", mx: "2px" }}>
+          <Card
+            variant="outlined"
+            sx={{
+              bgcolor: theme.palette.background.alt,
+              marginTop: "15px",
+              marginBottom: "15px",
             }}
-            to={`/laboredit/${_id}`}
           >
-            Edit
-          </Link>
-        </Button>
-        <Button
-          variant="contained"
-          onClick={() => setDeleteLabor(true)}
-          sx={{ marginLeft: "15px" }}
-        >
-          Delete
-        </Button>
-      </Box>
-
-      {deleteLabor && (
+            <CardContent>
+              <Typography
+                sx={{ marginBottom: "5px" }}
+                variant="h5"
+                fontWeight="bold"
+                color={theme.palette.secondary.main}
+              >
+                {name}
+              </Typography>
+              <Typography
+                sx={{ marginBottom: "5px" }}
+                variant="body"
+                color={theme.palette.secondary.main}
+              >
+                Customer Price: ${price}
+                <br />
+              </Typography>
+              <Typography
+                sx={{ marginBottom: "5px" }}
+                variant="body"
+                color={theme.palette.secondary.main}
+              >
+                Category: {laborCategory.name}
+              </Typography>
+            </CardContent>
+          </Card>
+        </Box>
         <Box mt="15px">
-          Are you sure you want to delete?
+          <Button variant="contained">
+            <Link
+              component={RouterLink}
+              color="inherit"
+              underline="none"
+              onClick={() => {
+                getDetail(_id, "labor");
+                getFormData("labor");
+              }}
+              to={`/laboredit/${_id}`}
+            >
+              Edit
+            </Link>
+          </Button>
           <Button
             variant="contained"
-            onClick={() => onSubmitPost("", "labor", _id, "delete-post")}
+            onClick={() => setDeleteLabor(true)}
             sx={{ marginLeft: "15px" }}
           >
             Delete
           </Button>
         </Box>
-      )}
-      {response && <Box>{responseText.msg}</Box>}
-      {responseError && <Box>{responseErrorText.msg}</Box>}
+
+        {deleteLabor && (
+          <Box mt="15px">
+            Are you sure you want to delete?
+            <Button
+              variant="contained"
+              onClick={() => onSubmitPost("", "labor", _id, "delete-post")}
+              sx={{ marginLeft: "15px" }}
+            >
+              Delete
+            </Button>
+          </Box>
+        )}
+        {response && <Box>{responseText.msg}</Box>}
+        {responseError && <Box>{responseErrorText.msg}</Box>}
+      </Box>
     </Box>
   );
 };

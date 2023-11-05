@@ -90,12 +90,11 @@ const VendorEditForm = () => {
   }
 
   return (
-    <Box m="1.5rem 2.5rem">
+    <Box>
       <Header title="Edit Vendor" subtitle="Fill out form below" />
       <form onSubmit={onSubmit}>
         <Box
-          mt="1rem"
-          mb="1rem"
+          m="1.5rem 2.5rem"
           sx={{
             display: "flex",
             flexDirection: "column",
@@ -200,17 +199,17 @@ const VendorEditForm = () => {
             name="customer_number"
             inputProps={{ minLength: 3 }}
           />
+          <Button variant="contained" type="submit" sx={{ marginTop: "15px" }}>
+            Submit
+          </Button>
         </Box>
-        <Button variant="contained" type="submit">
-          Submit
-        </Button>
       </form>
 
       {response && (
-        <Box mt="20px">
+        <Box m="1.5rem 2.5rem">
           <Typography
             variant="h3"
-            color={theme.palette.secondary[300]}
+            color={theme.palette.secondary.main}
             fontWeight="bold"
             sx={{ mb: "5px" }}
           >
@@ -240,7 +239,7 @@ const VendorEditForm = () => {
               >
                 <Typography
                   variant="h3"
-                  color={theme.palette.secondary[100]}
+                  color={theme.palette.secondarymain}
                   fontWeight="bold"
                   sx={{ mb: "5px" }}
                 >
@@ -269,7 +268,7 @@ const VendorEditForm = () => {
               >
                 <Typography
                   variant="h3"
-                  color={theme.palette.secondary[100]}
+                  color={theme.palette.secondarymain}
                   fontWeight="bold"
                   sx={{ mb: "5px" }}
                 >

@@ -230,8 +230,8 @@ function Nav() {
                             : "transparent",
                         color:
                           active === lcText
-                          ? theme.palette.secondary.main
-                          : theme.palette.neutral.main,
+                            ? theme.palette.secondary.main
+                            : theme.palette.neutral.main,
                         height: "30px",
                       }}
                     >

@@ -19,7 +19,6 @@ const PartForm = () => {
   }, []);
 
   const {
-    isLoading,
     getDetail,
     onSubmitPost,
     formData,
@@ -82,7 +81,7 @@ const PartForm = () => {
     });
   };
 
-  if (isLoading) {
+  if (partInfo == null) {
     return (
       <section className="section">
         <h4>Loading...</h4>
@@ -91,12 +90,11 @@ const PartForm = () => {
   }
 
   return (
-    <Box m="1.5rem 2.5rem">
+    <Box>
       <Header title="Create Part" subtitle="Fill out form below" />
       <form onSubmit={onSubmit}>
         <Box
-          mt="1rem"
-          mb="1rem"
+          m="0 2.5rem"
           sx={{
             display: "flex",
             flexDirection: "column",
@@ -200,10 +198,16 @@ const PartForm = () => {
             onChange={handleChange}
             name="manufacture"
           />
+          <Button
+            variant="contained"
+            type="submit"
+            sx={{
+              marginTop: "15px",
+            }}
+          >
+            Submit
+          </Button>
         </Box>
-        <Button variant="contained" type="submit">
-          Submit
-        </Button>
       </form>
       <Response
         response={response}

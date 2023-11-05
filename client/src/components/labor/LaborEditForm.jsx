@@ -62,12 +62,11 @@ const LaborEditForm = () => {
   }
 
   return (
-    <Box m="1.5rem 2.5rem">
+    <Box>
       <Header title="Edit Labor" subtitle="Fill out form below" />
       <form onSubmit={onSubmit}>
         <Box
-          mt="1rem"
-          mb="1rem"
+          m="1.5rem 2.5rem"
           sx={{
             display: "flex",
             flexDirection: "column",
@@ -128,16 +127,16 @@ const LaborEditForm = () => {
                 })}
             </NativeSelect>
           </FormControl>
+          <Button variant="contained" type="submit" sx={{ marginTop: "15px" }}>
+            Submit
+          </Button>
         </Box>
-        <Button variant="contained" type="submit">
-          Submit
-        </Button>
       </form>
       {response && (
-        <Box mt="20px">
+        <Box m="1.5rem 2.5rem">
           <Typography
             variant="h3"
-            color={theme.palette.secondary[300]}
+            color={theme.palette.secondary.main}
             fontWeight="bold"
             sx={{ mb: "5px" }}
           >
@@ -167,7 +166,7 @@ const LaborEditForm = () => {
               >
                 <Typography
                   variant="h3"
-                  color={theme.palette.secondary[100]}
+                  color={theme.palette.secondary.main}
                   fontWeight="bold"
                   sx={{ mb: "5px" }}
                 >
@@ -187,7 +186,7 @@ const LaborEditForm = () => {
               >
                 <Typography
                   variant="h3"
-                  color={theme.palette.secondary[100]}
+                  color={theme.palette.secondary.main}
                   fontWeight="bold"
                   sx={{ mb: "5px" }}
                 >

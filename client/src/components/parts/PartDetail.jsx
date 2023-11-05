@@ -45,78 +45,80 @@ const PartDetail = () => {
     data.part;
 
   return (
-    <Box m="1.5rem 2.5rem">
+    <Box>
       <Header title={"Part Detail"} />
-      <Card
-        variant="outlined"
-        sx={{
-          bgcolor: theme.palette.background.alt,
-          marginTop: "15px",
-          marginBottom: "15px",
-        }}
-      >
-        <CardContent>
-          <Typography
-            variant="h4"
-            fontWeight="bold"
-            color={theme.palette.secondary[300]}
-          >
-            {name}
-          </Typography>
+      <Box m="1.5rem 2.5rem">
+        <Card
+          variant="outlined"
+          sx={{
+            bgcolor: theme.palette.background.alt,
+            marginTop: "15px",
+            marginBottom: "15px",
+          }}
+        >
+          <CardContent>
+            <Typography
+              variant="h4"
+              fontWeight="bold"
+              color={theme.palette.secondary.main}
+            >
+              {name}
+            </Typography>
 
-          <p>Part Number: {part_number}</p>
-          <p>Manufacture: {manufacture}</p>
-          <p>Customer Price: ${customer_price}</p>
-          <p>Cost: ${cost}</p>
-          <p>
-            Vendor:{" "}
+            <p>Part Number: {part_number}</p>
+            <p>Manufacture: {manufacture}</p>
+            <p>Customer Price: ${customer_price}</p>
+            <p>Cost: ${cost}</p>
+            <p>
+              Vendor:{" "}
+              <Link
+                component={RouterLink}
+                color="inherit"
+                onClick={() => getDetail(vendor._id, "vendors")}
+                to={`/vendordetail/${vendor._id}`}
+              >
+                {vendor.name}
+              </Link>
+            </p>
+          </CardContent>
+        </Card>
+        <Box mt="15px">
+          <Button variant="contained">
             <Link
               component={RouterLink}
               color="inherit"
-              onClick={() => getDetail(vendor._id, "vendors")}
-              to={`/vendordetail/${vendor._id}`}
+              underline="none"
+              onClick={() => {
+                getDetail(_id, "parts");
+                getFormData("parts");
+              }}
+              to={`/parteditform/${_id}`}
             >
-              {vendor.name}
+              Edit
             </Link>
-          </p>
-        </CardContent>
-      </Card>
-      <Box mt="15px">
-        <Button variant="contained">
-          <Link
-            component={RouterLink}
-            color="inherit"
-            underline="none"
-            onClick={() => {
-              getDetail(_id, "parts");
-              getFormData("parts");
-            }}
-            to={`/parteditform/${_id}`}
+          </Button>
+          <Button
+            variant="contained"
+            onClick={() => setDeletePart(true)}
+            sx={{ marginLeft: "15px" }}
           >
-            Edit
-          </Link>
-        </Button>
-        <Button
-          variant="contained"
-          onClick={() => setDeletePart(true)}
-          sx={{ marginLeft: "15px" }}
-        >
-          Delete
-        </Button>
-        {deletePart && (
-          <Box mt="15px">
-            Are you sure you want to delete?
-            <Button
-              variant="contained"
-              onClick={() => onSubmitPost("", "parts", _id, "delete-post")}
-              sx={{ marginLeft: "15px" }}
-            >
-              Delete
-            </Button>
-          </Box>
-        )}
-        {response && <Box>{responseText.msg}</Box>}
-        {responseError && <Box>{responseErrorText.msg}</Box>}
+            Delete
+          </Button>
+          {deletePart && (
+            <Box mt="15px">
+              Are you sure you want to delete?
+              <Button
+                variant="contained"
+                onClick={() => onSubmitPost("", "parts", _id, "delete-post")}
+                sx={{ marginLeft: "15px" }}
+              >
+                Delete
+              </Button>
+            </Box>
+          )}
+          {response && <Box>{responseText.msg}</Box>}
+          {responseError && <Box>{responseErrorText.msg}</Box>}
+        </Box>
       </Box>
     </Box>
   );

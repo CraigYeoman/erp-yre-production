@@ -46,8 +46,8 @@ export const tokensDark = {
     darkBlue: "rgb(21, 101, 192)",
     black: "rgb(18,25,38)",
     grey: "rgb(54, 65, 82)",
-    offWhite: "rgb(238, 242, 246)"
-  }
+    offWhite: "rgb(238, 242, 246)",
+  },
 };
 
 // function that reverses the color palette
@@ -107,7 +107,7 @@ export const themeSettings = (mode) => {
             neutral: {
               ...tokensLight.grey,
               main: tokensDark.light.grey,
-              light: tokensDark.light.offWhite
+              light: tokensDark.light.offWhite,
             },
             background: {
               default: tokensDark.light.white,

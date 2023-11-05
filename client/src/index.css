@@ -3,7 +3,6 @@
 html,
 body,
 #root,
-
 :root {
   background-color: rgb(238, 242, 246);
 }
@@ -19,7 +18,7 @@ body,
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: rgb(255, 255, 255)s;
+  background: rgb(255, 255, 255) s;
 }
 
 /* Handle */
@@ -29,5 +28,5 @@ body,
 
 /* Handle on Hover */
 ::-webkit-scrollbar-track:hover {
-  opacity: .75;
+  opacity: 0.75;
 }

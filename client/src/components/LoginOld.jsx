@@ -112,7 +112,7 @@ const Login = () => {
           name="email"
           onChange={handleChange}
           value={values.email}
-          sx={{color: "rgb(89,89,89)"}}
+          sx={{ color: "rgb(89,89,89)" }}
         />
         <TextField
           label="Password"

@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useAppContext } from "../context/appContext";
-import { Box, useTheme, Typography } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import IndexGrid from "./IndexGrid";
 import Header from "./Header";
-import DashboardList from "./DashboardList"
+import DashboardList from "./DashboardList";
 import PieActiveArc from "./PieChart";
 
 const Index = () => {
@@ -23,38 +23,10 @@ const Index = () => {
       </section>
     );
   }
-console.log(data.countArray)
+  console.log(data.countArray);
   return (
-    <Box >
+    <Box>
       <Header title="ERP APP" subtitle="Welcome" />
-
-      
-        {/* <Box
-          mt="20px"
-          gap="1rem"
-          sx={{
-            flexDirection: "row",
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "space-between",
-          }}
-          backgroundColor={theme.palette.background.alt}
-          borderRadius="0.55rem"
-          p="1.25rem 1rem"
-        > */}
-          {/* {data.countArray.map((jobType) => (
-            <Box key={jobType.name}>
-              <Typography
-                variant="h4"
-                fontWeight="600"
-                sx={{ color: theme.palette.secondary[100] }}
-              >
-                {jobType.name}: {jobType.count}
-              </Typography>
-            </Box>
-          ))} */}
-        {/* </Box> */}
-      
       <Box height="75vh">
         <Box
           sx={{
@@ -63,13 +35,19 @@ console.log(data.countArray)
             justifyContent: "space-evenly",
             gap: "15px",
             padding: "25px",
-            alignItems: "center"
+            alignItems: "center",
           }}
         >
           <DashboardList data={data.countArray}></DashboardList>
-          <Box width="550px"
-            sx={{ padding: "25px", backgroundColor: theme.palette.background.default, borderRadius: "10px"}}>
-            <PieActiveArc data={data.countArray}/>
+          <Box
+            width="550px"
+            sx={{
+              padding: "25px",
+              backgroundColor: theme.palette.background.default,
+              borderRadius: "10px",
+            }}
+          >
+            <PieActiveArc data={data.countArray} />
           </Box>
           <IndexGrid name="Past Due" data={data.past_due} />
           <IndexGrid name="Due This Week" data={data.due_this_week} />

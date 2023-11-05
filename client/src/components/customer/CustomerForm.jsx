@@ -79,12 +79,11 @@ const CustomerForm = () => {
   }
 
   return (
-    <Box m="1.5rem 2.5rem">
+    <Box>
       <Header title="New Customer" subtitle="Fill out form below" />
       <form onSubmit={onSubmit}>
         <Box
-          mt="1rem"
-          mb="1rem"
+          m="0rem 2.5rem"
           sx={{
             display: "flex",
             flexDirection: "column",
@@ -179,10 +178,16 @@ const CustomerForm = () => {
             name="zip_code"
             inputProps={{ minLength: 5, maxLength: 5 }}
           />
+          <Button
+            variant="contained"
+            type="submit"
+            sx={{
+              marginTop: "15px",
+            }}
+          >
+            Submit
+          </Button>
         </Box>
-        <Button variant="contained" type="submit">
-          Submit
-        </Button>
       </form>
       <Response
         response={response}

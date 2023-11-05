@@ -14,12 +14,12 @@ const Response = ({
   const theme = useTheme();
 
   return (
-    <Box>
+    <Box m="0rem 2.5rem">
       {response && (
         <Box>
           <Typography
             variant="h4"
-            color={theme.palette.secondary[100]}
+            color={theme.palette.secondary.main}
             fontWeight="bold"
             sx={{ mt: "15px" }}
           >

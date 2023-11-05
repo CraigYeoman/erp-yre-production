@@ -76,12 +76,11 @@ const VendorForm = () => {
   }
 
   return (
-    <Box m="1.5rem 2.5rem">
+    <Box>
       <Header title="New Vendor" subtitle="Fill out form below" />
       <form onSubmit={onSubmit}>
         <Box
-          mt="1rem"
-          mb="1rem"
+          m="0rem 2.5rem"
           sx={{
             display: "flex",
             flexDirection: "column",
@@ -186,10 +185,16 @@ const VendorForm = () => {
             name="customer_number"
             inputProps={{ minLength: 3 }}
           />
+          <Button
+            variant="contained"
+            type="submit"
+            sx={{
+              marginTop: "15px",
+            }}
+          >
+            Submit
+          </Button>
         </Box>
-        <Button variant="contained" type="submit">
-          Submit
-        </Button>
       </form>
       <Response
         response={response}

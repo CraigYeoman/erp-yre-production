@@ -57,11 +57,10 @@ const LaborList = () => {
       <Header title="Labor" subtitle="List of Labor" />
       <Box
         m="1.5rem 2.5rem"
-        height="75vh"
+        height="80vh"
         sx={{
           "& .MuiDataGrid-root": {
             border: "none",
-
           },
           "& .MuiDataGrid-main": {
             padding: "10px",
@@ -74,7 +73,7 @@ const LaborList = () => {
             paddingBottom: "8px",
             paddingTop: "8px",
             height: "auto",
-            color:theme.palette.secondary.main
+            color: theme.palette.secondary.main,
           },
           "& .MuiDataGrid-columnHeaders": {
             backgroundColor: theme.palette.background.default,
@@ -96,12 +95,11 @@ const LaborList = () => {
           "& .MuiDataGrid-columnHeaderTitle": {
             whiteSpace: "normal",
             lineHeight: "normal",
-            fontWeight: "bold"
+            fontWeight: "bold",
           },
           "& .MuiDataGrid-columnHeader": {
             // Forced to use important since overriding inline styles
             height: "unset !important",
-            
           },
         }}
       >

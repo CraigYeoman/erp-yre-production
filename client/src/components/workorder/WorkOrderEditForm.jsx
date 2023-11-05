@@ -234,12 +234,11 @@ const WorkOrderForm = () => {
   }
 
   return (
-    <Box m="1.5rem 2.5rem">
+    <Box>
       <Header title="Edit Work Order" subtitle="Edit form below" />
       <form onSubmit={onSubmit}>
         <Box
-          mt="1rem"
-          mb="1rem"
+          m="1.5rem 2.5rem"
           sx={{
             display: "flex",
             flexDirection: "column",
@@ -346,7 +345,7 @@ const WorkOrderForm = () => {
               sx={{
                 width: "100%",
                 maxWidth: 360,
-                bgcolor: theme.palette.background.default,
+                bgcolor: theme.palette.background.alt,
               }}
               component="nav"
               aria-labelledby="nested-list-subheader"
@@ -355,7 +354,7 @@ const WorkOrderForm = () => {
                   component="div"
                   id="nested-list-subheader"
                   sx={{
-                    bgcolor: theme.palette.background.default,
+                    bgcolor: theme.palette.background.alt,
                     fontWeight: "bold",
                     fontSize: "16px",
                     paddingLeft: "0px",
@@ -482,7 +481,7 @@ const WorkOrderForm = () => {
               })}
             <Typography
               variant="h6"
-              color={theme.palette.secondary[300]}
+              color={theme.palette.secondary.main}
               sx={{ mb: "10px", ml: "15px" }}
               fontWeight="bold"
             >
@@ -495,7 +494,7 @@ const WorkOrderForm = () => {
               sx={{
                 width: "100%",
                 maxWidth: 360,
-                bgcolor: theme.palette.background.default,
+                bgcolor: theme.palette.background.alt,
               }}
               component="nav"
               aria-labelledby="nested-list-subheader"
@@ -504,7 +503,7 @@ const WorkOrderForm = () => {
                   component="div"
                   id="nested-list-subheader"
                   sx={{
-                    bgcolor: theme.palette.background.default,
+                    bgcolor: theme.palette.background.alt,
                     fontWeight: "bold",
                     fontSize: "16px",
                     paddingLeft: "0px",
@@ -575,7 +574,7 @@ const WorkOrderForm = () => {
           <Box mb="5px">
             <Typography
               variant="h6"
-              color={theme.palette.secondary[300]}
+              color={theme.palette.secondary.main}
               sx={{ mb: "10px", ml: "15px" }}
               fontWeight="bold"
             >
@@ -662,152 +661,158 @@ const WorkOrderForm = () => {
             value={values.notes}
             onChange={handleChange}
           />
-        </Box>
-        <Box mb="15px">
-          <Button variant="contained" component="label">
-            Upload
-            <input
-              id="files"
-              hidden
-              accept="image/*"
-              multiple
-              type="file"
-              onChange={(event) => {
-                fileSelect(customerImg, setCustomerImg, event);
+          <Box mb="15px">
+            <Button
+              variant="contained"
+              component="label"
+              sx={{
+                marginTop: "15px",
               }}
-            />
-          </Button>
-          <Box
-            mt="15px"
-            mb="15px"
-            sx={{
-              display: "flex",
-              gap: "15px",
-              flexDirection: "column",
-            }}
-          >
-            <Typography
-              variant="h4"
-              color={theme.palette.secondary[100]}
-              fontWeight="bold"
-              sx={{ mb: "5px" }}
             >
-              New Images
-            </Typography>
+              Upload
+              <input
+                id="files"
+                hidden
+                accept="image/*"
+                multiple
+                type="file"
+                onChange={(event) => {
+                  fileSelect(customerImg, setCustomerImg, event);
+                }}
+              />
+            </Button>
             <Box
+              mt="15px"
+              mb="15px"
               sx={{
                 display: "flex",
                 gap: "15px",
-                flexDirection: "row",
+                flexDirection: "column",
               }}
             >
-              {(customerImg || []).map((img) => {
-                return (
-                  <Box
-                    sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                    }}
-                  >
-                    <img
-                      alt="not found"
-                      width={"250px"}
-                      src={URL.createObjectURL(img)}
-                    />
-                    <Button
-                      onClick={() =>
-                        fileRemove(customerImg, setCustomerImg, img)
-                      }
+              <Typography
+                variant="h4"
+                color={theme.palette.secondary.main}
+                fontWeight="bold"
+                sx={{ mb: "5px" }}
+              >
+                New Images
+              </Typography>
+              <Box
+                sx={{
+                  display: "flex",
+                  gap: "15px",
+                  flexDirection: "row",
+                }}
+              >
+                {(customerImg || []).map((img) => {
+                  return (
+                    <Box
+                      sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                      }}
                     >
-                      Remove
-                    </Button>
-                  </Box>
-                );
-              })}
+                      <img
+                        alt="not found"
+                        width={"250px"}
+                        src={URL.createObjectURL(img)}
+                      />
+                      <Button
+                        onClick={() =>
+                          fileRemove(customerImg, setCustomerImg, img)
+                        }
+                      >
+                        Remove
+                      </Button>
+                    </Box>
+                  );
+                })}
+              </Box>
             </Box>
           </Box>
-        </Box>
-        {imgs.length === 0 ? (
-          <option></option>
-        ) : (
-          <Box
-            mt="15px"
-            mb="15px"
-            sx={{
-              display: "flex",
-              gap: "15px",
-              flexDirection: "column",
-            }}
-          >
-            {" "}
-            <Typography
-              variant="h4"
-              color={theme.palette.secondary[100]}
-              fontWeight="bold"
-              sx={{ mb: "5px" }}
-            >
-              Current Images
-            </Typography>
+          {imgs.length === 0 ? (
+            <option></option>
+          ) : (
             <Box
+              mt="15px"
+              mb="15px"
               sx={{
                 display: "flex",
                 gap: "15px",
-                flexDirection: "row",
+                flexDirection: "column",
               }}
             >
-              {imgs.map((pic) => {
-                return (
-                  <Box>
-                    {currentImgs.includes(pic) ? (
-                      <Box
-                        sx={{
-                          display: "flex",
-                          flexDirection: "column",
-                        }}
-                      >
-                        <img src={`/${pic}`} alt="img" width="250px" />
-                        <Button
-                          onClick={() => {
-                            deletePath(pic, currentImgs, setCurrentImgs);
+              {" "}
+              <Typography
+                variant="h4"
+                color={theme.palette.secondary.main}
+                fontWeight="bold"
+                sx={{ mb: "5px" }}
+              >
+                Current Images
+              </Typography>
+              <Box
+                sx={{
+                  display: "flex",
+                  gap: "15px",
+                  flexDirection: "row",
+                }}
+              >
+                {imgs.map((pic) => {
+                  return (
+                    <Box>
+                      {currentImgs.includes(pic) ? (
+                        <Box
+                          sx={{
+                            display: "flex",
+                            flexDirection: "column",
                           }}
                         >
-                          Remove
-                        </Button>
-                      </Box>
-                    ) : (
-                      <Box
-                        sx={{
-                          display: "flex",
-                          flexDirection: "column",
-                        }}
-                      >
-                        <img
-                          src={`/${pic}`}
-                          alt="img"
-                          width="250px"
-                          style={{ opacity: 0.5 }}
-                        />
-                        <Button
-                          onClick={() => {
-                            addPath(pic, currentImgs, setCurrentImgs);
+                          <img src={`/${pic}`} alt="img" width="250px" />
+                          <Button
+                            onClick={() => {
+                              deletePath(pic, currentImgs, setCurrentImgs);
+                            }}
+                          >
+                            Remove
+                          </Button>
+                        </Box>
+                      ) : (
+                        <Box
+                          sx={{
+                            display: "flex",
+                            flexDirection: "column",
                           }}
                         >
-                          Add
-                        </Button>
-                      </Box>
-                    )}
-                  </Box>
-                );
-              })}
+                          <img
+                            src={`/${pic}`}
+                            alt="img"
+                            width="250px"
+                            style={{ opacity: 0.5 }}
+                          />
+                          <Button
+                            onClick={() => {
+                              addPath(pic, currentImgs, setCurrentImgs);
+                            }}
+                          >
+                            Add
+                          </Button>
+                        </Box>
+                      )}
+                    </Box>
+                  );
+                })}
+              </Box>
             </Box>
-          </Box>
-        )}
-        <Button variant="contained" type="submit">
-          Submit
-        </Button>
+          )}
+          <Button variant="contained" type="submit">
+            Submit
+          </Button>
+        </Box>
       </form>
       {response && (
-        <Box mt="15px">
+        <Box m="1.5rem 2.5rem" sx={{ fontWeight: "bold" }}>
           {responseText.msg}{" "}
           <Link
             component={RouterLink}

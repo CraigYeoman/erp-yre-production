@@ -2,12 +2,14 @@ import { Link as RouterLink } from "react-router-dom";
 import { useAppContext } from "../../context/appContext";
 import { useEffect, useState } from "react";
 import Header from "../Header";
-import { Box, Link, Button } from "@mui/material";
+import { Box, Link, Button, useTheme, Typography } from "@mui/material";
 
 const LaborCategoryDetail = () => {
   useEffect(() => {
     editFormLoad();
   }, []);
+
+  const theme = useTheme();
 
   const {
     data,
@@ -34,46 +36,55 @@ const LaborCategoryDetail = () => {
   const { name, _id } = data.labor_category_detail;
 
   return (
-    <Box m="1.5rem 2.5rem">
-      <Header title={name} subtitle={""} />
-
-      <Box mt="15px">
-        <Button variant="contained">
-          <Link
-            component={RouterLink}
-            color="inherit"
-            underline="none"
-            onClick={() => getDetail(_id, "laborcategory")}
-            to={`/laborcategoryedit/${_id}`}
-          >
-            Edit
-          </Link>
-        </Button>
-        <Button
-          variant="contained"
-          onClick={() => setDeleteCategory(true)}
-          sx={{ marginLeft: "15px" }}
+    <Box>
+      <Header title="Part Category Detail" subtitle={""} />
+      <Box m="1.5rem 2.5rem">
+        <Typography
+          variant="h3"
+          fontWeight="bold"
+          color={theme.palette.secondary.main}
+          sx={{ marginBottom: "15px" }}
         >
-          Delete
-        </Button>
-
-        {deleteCategory && (
-          <Box mt="15px">
-            Are you sure you want to delete?
-            <Button
-              variant="contained"
-              onClick={() =>
-                onSubmitPost("", "laborcategory", _id, "delete-post")
-              }
-              sx={{ marginLeft: "15px" }}
+          {name}
+        </Typography>
+        <Box mt="15px">
+          <Button variant="contained">
+            <Link
+              component={RouterLink}
+              color="inherit"
+              underline="none"
+              onClick={() => getDetail(_id, "laborcategory")}
+              to={`/laborcategoryedit/${_id}`}
             >
-              Delete
-            </Button>
-          </Box>
-        )}
+              Edit
+            </Link>
+          </Button>
+          <Button
+            variant="contained"
+            onClick={() => setDeleteCategory(true)}
+            sx={{ marginLeft: "15px" }}
+          >
+            Delete
+          </Button>
+
+          {deleteCategory && (
+            <Box mt="15px">
+              Are you sure you want to delete?
+              <Button
+                variant="contained"
+                onClick={() =>
+                  onSubmitPost("", "laborcategory", _id, "delete-post")
+                }
+                sx={{ marginLeft: "15px" }}
+              >
+                Delete
+              </Button>
+            </Box>
+          )}
+        </Box>
+        {response && <Box>{responseText.msg}</Box>}
+        {responseError && <Box>{responseErrorText.msg}</Box>}
       </Box>
-      {response && <Box>{responseText.msg}</Box>}
-      {responseError && <Box>{responseErrorText.msg}</Box>}
     </Box>
   );
 };

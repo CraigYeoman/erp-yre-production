@@ -208,12 +208,11 @@ const WorkOrderForm = () => {
   }
 
   return (
-    <Box m="1.5rem 2.5rem">
+    <Box>
       <Header title="Create Work Order" subtitle="Fill out form below" />
       <form onSubmit={onSubmit}>
         <Box
-          mt="1rem"
-          mb="1rem"
+          m="1.5rem 2.5rem"
           sx={{
             display: "flex",
             flexDirection: "column",
@@ -305,7 +304,7 @@ const WorkOrderForm = () => {
               sx={{
                 width: "100%",
                 maxWidth: 360,
-                bgcolor: theme.palette.background.default,
+                bgcolor: theme.palette.background.alt,
               }}
               component="nav"
               aria-labelledby="nested-list-subheader"
@@ -314,7 +313,7 @@ const WorkOrderForm = () => {
                   component="div"
                   id="nested-list-subheader"
                   sx={{
-                    bgcolor: theme.palette.background.default,
+                    bgcolor: theme.palette.background.alt,
                     fontWeight: "bold",
                     fontSize: "16px",
                     paddingLeft: "0px",
@@ -441,7 +440,7 @@ const WorkOrderForm = () => {
               })}
             <Typography
               variant="h6"
-              color={theme.palette.secondary[300]}
+              color={theme.palette.secondary.main}
               sx={{ mb: "10px", ml: "15px" }}
               fontWeight="bold"
             >
@@ -454,7 +453,7 @@ const WorkOrderForm = () => {
               sx={{
                 width: "100%",
                 maxWidth: 360,
-                bgcolor: theme.palette.background.default,
+                bgcolor: theme.palette.background.alt,
               }}
               component="nav"
               aria-labelledby="nested-list-subheader"
@@ -463,7 +462,7 @@ const WorkOrderForm = () => {
                   component="div"
                   id="nested-list-subheader"
                   sx={{
-                    bgcolor: theme.palette.background.default,
+                    bgcolor: theme.palette.background.alt,
                     fontWeight: "bold",
                     fontSize: "16px",
                     paddingLeft: "0px",
@@ -534,7 +533,7 @@ const WorkOrderForm = () => {
           <Box mb="5px">
             <Typography
               variant="h6"
-              color={theme.palette.secondary[300]}
+              color={theme.palette.secondary.main}
               sx={{ mb: "10px", ml: "15px" }}
               fontWeight="bold"
             >
@@ -616,41 +615,41 @@ const WorkOrderForm = () => {
             value={values.notes}
             onChange={handleChange}
           />
-        </Box>
-        <Box mb="15px">
-          <Button variant="contained" component="label">
-            Upload
-            <input
-              id="files"
-              hidden
-              accept="image/*"
-              multiple
-              type="file"
-              onChange={(event) => {
-                fileSelect(customerImg, setCustomerImg, event);
-              }}
-            />
+          <Box mb="15px">
+            <Button variant="contained" component="label">
+              Upload
+              <input
+                id="files"
+                hidden
+                accept="image/*"
+                multiple
+                type="file"
+                onChange={(event) => {
+                  fileSelect(customerImg, setCustomerImg, event);
+                }}
+              />
+            </Button>
+            {(customerImg || []).map(({ img }, index) => {
+              return (
+                <Box mt="15px" key={index}>
+                  <img
+                    alt="not found"
+                    width={"250px"}
+                    src={URL.createObjectURL(img)}
+                  />
+                  <Button
+                    onClick={() => fileRemove(customerImg, setCustomerImg, img)}
+                  >
+                    Remove
+                  </Button>
+                </Box>
+              );
+            })}
+          </Box>
+          <Button variant="contained" type="submit">
+            Submit
           </Button>
-          {(customerImg || []).map(({ img }, index) => {
-            return (
-              <Box mt="15px" key={index}>
-                <img
-                  alt="not found"
-                  width={"250px"}
-                  src={URL.createObjectURL(img)}
-                />
-                <Button
-                  onClick={() => fileRemove(customerImg, setCustomerImg, img)}
-                >
-                  Remove
-                </Button>
-              </Box>
-            );
-          })}
         </Box>
-        <Button variant="contained" type="submit">
-          Submit
-        </Button>
       </form>
       <Response
         response={response}
