@@ -10,12 +10,10 @@ const IndexGrid = ({ name, data }) => {
   const { loading, getDetail } = useAppContext();
 
   const theme = useTheme();
-
-  if (!data) {
+  console.log(data.length)
+  if (data.length === 0) {
     return (
-      <section className="section">
-        <h4>Loading...</h4>{" "}
-      </section>
+      <></>
     );
   }
 
@@ -103,6 +101,7 @@ const IndexGrid = ({ name, data }) => {
           "& .MuiDataGrid-cell": {
             backgroundColor: theme.palette.background.default,
             border: "none",
+            borderBottom: "none",
           },
           "& .MuiDataGrid-columnHeaders": {
             backgroundColor: theme.palette.background.default,

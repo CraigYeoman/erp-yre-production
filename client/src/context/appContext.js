@@ -286,7 +286,7 @@ const AppProvider = ({ children }) => {
   const sumTotal = (array, name) => {
     let sum = 0;
     for (let i = 0; i < array.length; i++) {
-      sum += array[i][name];
+      sum += Number(array[i][name]);
     }
     return sum;
   };

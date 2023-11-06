@@ -49,6 +49,8 @@ const WorkOrderList = () => {
     );
   }
 
+  console.log(data)
+
   const columns = [
     {
       field: "work_order_number",

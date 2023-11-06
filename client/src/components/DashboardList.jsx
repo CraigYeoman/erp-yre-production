@@ -12,7 +12,6 @@ import {
 // ==============================|| PAGE VIEWS BY PAGE TITLE ||============================== //
 
 const DashboardList = ({ data }) => {
-  console.log(data);
   const theme = useTheme();
   return (
     <Box
@@ -39,8 +38,10 @@ const DashboardList = ({ data }) => {
         <Grid item />
       </Grid>
       <List sx={{ p: 0, "& .MuiListItemButton-root": { py: 0 } }}>
-        {data.map((jobType) => (
-          <ListItemButton divider key={jobType.name}>
+        {data.map((jobType) => {
+          if (data.findIndex(x => x.name === jobType.name) != data.length-1) {
+            return(
+            <ListItemButton divider key={jobType.name}>
             <ListItemText
               secondary={
                 <Typography
@@ -68,7 +69,41 @@ const DashboardList = ({ data }) => {
               </Typography>
             </Stack>
           </ListItemButton>
-        ))}
+        )
+          }
+        else {
+           return (
+            <ListItemButton key={jobType.name}>
+            <ListItemText
+              secondary={
+                <Typography
+                  variant="subtitle1"
+                  sx={{
+                    display: "inline",
+                    color: theme.palette.secondary.main,
+                  }}
+                >
+                  {jobType.name}
+                </Typography>
+              }
+              primary={
+                <Typography color={theme.palette.secondary.light}>
+                  Job Type
+                </Typography>
+              }
+            />
+            <Stack alignItems="flex-end">
+              <Typography color={theme.palette.secondary.light}>
+                Total
+              </Typography>
+              <Typography variant="h5" color="primary">
+                {jobType.count}
+              </Typography>
+            </Stack>
+          </ListItemButton>
+          )
+        }  
+})}
       </List>
     </Box>
   );
