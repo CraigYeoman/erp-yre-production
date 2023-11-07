@@ -39,7 +39,7 @@ const DashboardList = ({ data }) => {
       </Grid>
       <List sx={{ p: 0, "& .MuiListItemButton-root": { py: 0 } }}>
         {data.map((jobType) => {
-          if (data.findIndex(x => x.name === jobType.name) != data.length-1) {
+          if (data.findIndex(x => x.name === jobType.name) !== data.length-1) {
             return(
             <ListItemButton divider key={jobType.name}>
             <ListItemText
