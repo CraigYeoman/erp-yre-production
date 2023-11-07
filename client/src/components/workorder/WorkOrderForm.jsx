@@ -24,7 +24,7 @@ import ListItemText from "@mui/material/ListItemText";
 import Collapse from "@mui/material/Collapse";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
-import TextareaAutosize from "@mui/base/TextareaAutosize";
+import { TextareaAutosize } from '@mui/base/TextareaAutosize';
 import Header from "../Header";
 import Response from "../Response";
 import { MdDeleteOutline } from "react-icons/md";
