@@ -74,6 +74,7 @@ const CustomerList = () => {
       <Box
         m="1.5rem 2.5rem"
         height="80vh"
+        maxWidth="calc(100% - 100px)"
         sx={{
           "& .MuiDataGrid-root": {
             border: "none",
