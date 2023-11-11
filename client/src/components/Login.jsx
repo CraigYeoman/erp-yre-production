@@ -13,6 +13,9 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useAppContext } from "../context/appContext";
+import logo from "../assets/img/yeomanRaceEnginesLogo.svg";
+import Prism from "../assets/img/subtle-prism.png"
+import Loading from "./Loading"
 
 const initialState = {
   name: "",
@@ -34,6 +37,7 @@ const defaultTheme = createTheme();
 export default function SignIn() {
   const navigate = useNavigate();
   const [values, setValues] = useState(initialState);
+  const [loading, SetLoading] = useState(false)
   const { user, isLoading, displayAlert, setupUser } = useAppContext();
 
   const handleChange = (e) => {
@@ -42,10 +46,11 @@ export default function SignIn() {
 
   const guestLogin = (e) => {
     e.preventDefault();
-    e.preventDefault();
+    SetLoading(true)
     const { name, email, password, isMember } = guest;
     if (!email || !password || (!isMember && !name)) {
       displayAlert();
+      SetLoading(false)
       return;
     }
     const currentUser = { name, email, password };
@@ -66,9 +71,11 @@ export default function SignIn() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    SetLoading(true)
     const { name, email, password, isMember } = values;
     if (!email || !password || (!isMember && !name)) {
       displayAlert();
+      SetLoading(false)
       return;
     }
     const currentUser = { name, email, password };
@@ -93,21 +100,48 @@ export default function SignIn() {
         navigate("/");
       }, 3000);
     }
-  }, [user, navigate]);
+  }, [user, navigate, loading]);
+
+  if(loading === true) {
+    
+    return (
+      <Loading />
+    )
+  }
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Container component="main" maxWidth="xs">
+      <Box sx={{
+        backgroundImage: `url(${Prism})`, 
+        height: "100vh", 
+        backgroundRepeat: "no-repeat", 
+        backgroundSize: "cover", 
+        border: "none rgb(230, 235, 241)"
+        }}>
+      <Box 
+        sx={{
+          padding: "25px"
+          }} 
+        >    
+            <img src={logo} height="40px" alt="logo"/>
+        </Box>
+      <Container component="main" maxWidth="xs" 
+        sx={{
+          backgroundColor: "rgb(238, 242, 246)", 
+          padding: "25px",
+          boxShadow: "rgba(0, 0, 0, 0.08) 0px 1px 4px",
+          borderRadius: "6px"
+          }}>
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 8,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+          <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
@@ -172,6 +206,7 @@ export default function SignIn() {
           </Box>
         </Box>
       </Container>
+      </Box>
     </ThemeProvider>
   );
 }

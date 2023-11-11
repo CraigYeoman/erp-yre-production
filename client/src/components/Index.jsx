@@ -23,7 +23,7 @@ const Index = () => {
       </section>
     );
   }
-  console.log(data.countArray);
+
   return (
     <Box>
       <Header title="ERP APP" subtitle="Welcome" />

@@ -10,7 +10,7 @@ const IndexGrid = ({ name, data }) => {
   const { loading, getDetail } = useAppContext();
 
   const theme = useTheme();
-  console.log(data.length)
+  
   if (data.length === 0) {
     return (
       <></>

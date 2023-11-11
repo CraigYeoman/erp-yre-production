@@ -1,6 +1,7 @@
 import Index from "./components/Index";
 import Landing from "./components/Landing";
 import Login from "./components/Login";
+import Loading from "./components/Loading";
 import ProtectedRoute from "./components/ProtectedRoute";
 import {
   CustomerDetail,
@@ -65,6 +66,7 @@ function App() {
           <Routes>
             <Route path="/landing" element={<Landing />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/loading" element={<Loading />} />
             <Route
               element={
                 <ProtectedRoute>
